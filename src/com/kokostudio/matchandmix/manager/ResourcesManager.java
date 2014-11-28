@@ -51,6 +51,9 @@ public class ResourcesManager {
 	public ITextureRegion pauseTextureRegion;
 	public ITextureRegion aboutTextureRegion;
 	public ITextureRegion gameGuessTextureRegion;
+	public ITextureRegion matchitTextureRegion;
+	public ITextureRegion SolveitTextureRegion;
+	public ITextureRegion CountitTextureRegion;
 	public ITextureRegion backTextureRegion;
 	
 	//-----------------------------
@@ -144,7 +147,8 @@ public class ResourcesManager {
 		backTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "back.png");
 		//aboutTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about.png");
 		gameGuessTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "guess_the_missing_letter.png");
-		
+		matchitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "ci_btn.png");
+		CountitTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "si_btn.png");
 		try {
 			this.mainMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.mainMenuTextureAtlas.load();

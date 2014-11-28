@@ -12,7 +12,7 @@ public class SplashScene extends BaseScene {
 
 	@Override
 	public void createScene() {
-		setBackground(new Background(Color.BLUE));
+		setBackground(new Background(Color.RED));
 	}
 
 	@Override

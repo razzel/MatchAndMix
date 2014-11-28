@@ -7,9 +7,11 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 
+
 import com.kokostudio.matchandmix.base.BaseScene;
 import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
+
 
 public class MainMenuScene extends BaseScene {
 	
@@ -19,7 +21,9 @@ public class MainMenuScene extends BaseScene {
 	private ButtonSprite pause;
 	private ButtonSprite about;
 	private ButtonSprite gameGuessTheMissingLetter;
-	
+	private ButtonSprite matchitTextureRegion;
+	private ButtonSprite solveitTextureRegion;
+	private ButtonSprite CountitTextureRegion;
 	@Override
 	public void createScene() {
 		createBackground();
@@ -121,7 +125,53 @@ public class MainMenuScene extends BaseScene {
 		};
 		registerTouchArea(gameGuessTheMissingLetter);
 		attachChild(gameGuessTheMissingLetter);
+		
+		matchitTextureRegion = new ButtonSprite(140, 240, resourcesManager.matchitTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					matchitTextureRegion.setScale(1.3f);
+					break;
+				case TouchEvent.ACTION_UP:
+					// load guess match it
+					// and dispose the main menu scene
+					SceneManager.getInstance().loadGTMLScene();
+					matchitTextureRegion.setScale(1.f);
+					break;
+				}
+				
+				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+			}
+			
+		};
+		
+		registerTouchArea(matchitTextureRegion);
+		attachChild(matchitTextureRegion);
+		CountitTextureRegion = new ButtonSprite(640, 240, resourcesManager.CountitTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					solveitTextureRegion.setScale(1.3f);
+					break;
+				case TouchEvent.ACTION_UP:
+					// load guess count it
+					// and dispose the main menu scene
+					SceneManager.getInstance().loadGTMLScene();
+					CountitTextureRegion.setScale(1.f);
+					break;
+				}
+				
+				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+			}
+			
+		};
+		registerTouchArea(CountitTextureRegion);
+		attachChild(CountitTextureRegion);
 	}
+	
+	
 	
 
 }
