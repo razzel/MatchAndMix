@@ -5,14 +5,18 @@ import org.andengine.entity.sprite.ButtonSprite;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
+import org.andengine.engine.camera.Camera;
+import org.andengine.engine.camera.hud.HUD;
 
 import android.util.Log;
 
 import com.kokostudio.matchandmix.base.BaseScene; 
+import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 
 public class GuessTheMissingLetter extends BaseScene {
-
+	
+	private HUD mainMenuHUD;
 	private ButtonSprite[] questionFrame;
 	private ButtonSprite back;
 	private Sprite qheader;
@@ -97,8 +101,28 @@ public class GuessTheMissingLetter extends BaseScene {
 		attachChild(qheader);
 		
 		// BACK BUTTON
-		back = new ButtonSprite(740, 60, resourcesManager.backTexture, vbom);
+	
+		back = new ButtonSprite(740, 60, resourcesManager.backTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					back.setScale(1.3f);
+					break;
+				case TouchEvent.ACTION_UP:
+					SceneManager.getInstance().loadPlayMenuScene();
+					back.setScale(1.0f);
+				}				
+				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+			}				
+		};
+		
+		
+		registerTouchArea(back);
+		
+		
 		attachChild(back);
+		camera.setHUD(mainMenuHUD);
 	}
 	
 }

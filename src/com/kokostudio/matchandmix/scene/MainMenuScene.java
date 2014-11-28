@@ -126,6 +126,7 @@ public class MainMenuScene extends BaseScene {
 		registerTouchArea(gameGuessTheMissingLetter);
 		attachChild(gameGuessTheMissingLetter);
 		
+		
 		matchitTextureRegion = new ButtonSprite(140, 240, resourcesManager.matchitTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
@@ -148,6 +149,9 @@ public class MainMenuScene extends BaseScene {
 		
 		registerTouchArea(matchitTextureRegion);
 		attachChild(matchitTextureRegion);
+		
+		// Count IT
+		
 		CountitTextureRegion = new ButtonSprite(640, 240, resourcesManager.CountitTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
