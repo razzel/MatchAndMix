@@ -55,6 +55,7 @@ public class ResourcesManager {
 	public ITextureRegion SolveitTextureRegion;
 	public ITextureRegion CountitTextureRegion;
 	public ITextureRegion backTextureRegion;
+	public ITextureRegion loadingTextureRegion;
 	
 	//-----------------------------
 	// CLASS LOGIC
@@ -93,6 +94,8 @@ public class ResourcesManager {
 	
 	//// SPLASH SCENE////
 	public void loadSplashScene() {
+		
+		
 		
 	}
 	

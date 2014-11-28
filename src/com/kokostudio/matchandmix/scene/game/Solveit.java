@@ -99,6 +99,7 @@ public class Solveit extends BaseScene {
 		// BACK BUTTON
 		back = new ButtonSprite(740, 60, resourcesManager.backTexture, vbom);
 		attachChild(back);
+		
 	}
 	
 }
