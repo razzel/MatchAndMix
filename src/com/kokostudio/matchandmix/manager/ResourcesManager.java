@@ -42,6 +42,12 @@ public class ResourcesManager {
 	public ITextureRegion qHeaderTextureRegion;
 	public ITextureRegion backTexture;
 	
+	
+	// Splash Textures
+	public BitmapTextureAtlas SplashTextureAtlas;
+	public ITextureRegion SplashTextureRegion;
+	
+
 	// PLAY MENU TEXTURES **********************************************
 	public BuildableBitmapTextureAtlas playMenuTextureAtlas;
 	public ITextureRegion playMenuBackgroundTexture;
@@ -95,7 +101,10 @@ public class ResourcesManager {
 	
 	//// SPLASH SCENE////
 	public void loadSplashScene() {
-		
+	//BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+	//	SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 800, 480);
+	//	SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(SplashTextureAtlas, activity, "loading.png", 10,10);
+	//	SplashTextureAtlas.load();
 		
 		
 	}

@@ -1,6 +1,7 @@
 package com.kokostudio.matchandmix.scene;
 
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.util.adt.color.Color;
 
 import com.kokostudio.matchandmix.base.BaseScene;
@@ -12,7 +13,10 @@ public class SplashScene extends BaseScene {
 
 	@Override
 	public void createScene() {
-		setBackground(new Background(Color.RED));
+		setBackground(new Background(Color.YELLOW));
+		//splash = new Sprite(400, 240, resourcesManager.SplashTextureRegion, vbom);
+		//attachChild(splash);
+		
 	}
 
 	@Override
@@ -27,8 +31,8 @@ public class SplashScene extends BaseScene {
 
 	@Override
 	public void disposeScene() {
-		//splash.detachSelf();
-		//splash.dispose();
+	//	splash.detachSelf();
+	//	splash.dispose();
 		this.detachSelf();
 		this.dispose();
 	}
