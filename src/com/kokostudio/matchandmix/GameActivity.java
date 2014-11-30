@@ -21,7 +21,7 @@ import com.kokostudio.matchandmix.manager.ResourcesManager;
 import com.kokostudio.matchandmix.manager.SceneManager;
 
 public class GameActivity extends BaseGameActivity {
-	
+	//trying
 	/*
 	 *  800x480 RatioResolutionPolicy
 	 * 
