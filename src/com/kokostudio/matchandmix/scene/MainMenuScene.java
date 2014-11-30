@@ -103,7 +103,7 @@ public class MainMenuScene extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess match it
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadMatchitScene();
+					SceneManager.getInstance().loadMatchItScene();
 					matchitTextureRegion.setScale(1.f);
 					break;
 				}
