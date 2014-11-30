@@ -132,7 +132,7 @@ public class MatchIt extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadMatchItScene();
+					SceneManager.getInstance().loadMatchItPanelScene();
 					questionFrame.setScale(1.f);
 					break;
 				}

@@ -32,6 +32,8 @@ public class SceneManager {
 	private BaseScene CountItScene;
 	private BaseScene SolveItScene;
 	private BaseScene ThatColorIsScene;
+	//Panel GAME
+	private BaseScene MatchItPanel;
 	
 	//---------------------------------
 	// VARIABLES
@@ -54,7 +56,9 @@ public class SceneManager {
 		SCENE_GTML,
 		SCENE_COUNTIT,
 		SCENE_SOLVEIT,
-		SCENE_THATCOLORIS	
+		SCENE_THATCOLORIS,	
+		//GAME PANEL SCENES
+		SCENE_MATCHITPANEL
 	}
 	
 	//----------------------------------
@@ -125,6 +129,9 @@ public class SceneManager {
 		MatchItScene = new MatchIt();
 		setScene(MatchItScene);
 		
+		
+		
+		
 	}
 	//----------------------------------
 	// GETTERS AND SETTERS
@@ -167,10 +174,26 @@ public class SceneManager {
 		case SCENE_MATCHIT:
 			setScene(MatchItScene);
 			break;
+		case SCENE_MATCHITPANEL:
+			setScene(MatchItPanel);
+			break;
 		//
 		default:
 			break;
 		}
+	}
+
+	public void loadMatchItPanelScene() {
+		// unload the main menu textures
+		ResourcesManager.getInstance().unloadMainMenuTextures();
+		// load the guess the missing letter resources
+		ResourcesManager.getInstance().loadMatchItResources();
+		MatchItPanel = new MatchIt();
+		setScene(MatchItPanel);
+		
+		
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

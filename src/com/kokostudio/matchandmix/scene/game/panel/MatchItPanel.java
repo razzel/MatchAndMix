@@ -46,14 +46,18 @@ public class MatchItPanel extends BaseScene{
 
 	@Override
 	public SceneType getSceneType() {
-		// TODO Auto-generated method stub
-		return SceneType.SCENE_MATCHIT;
+	
+		return SceneType.SCENE_MATCHITPANEL;
 	}
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
-		
+		camera.setHUD(null);
+		camera.setCenter(400, 240);
+	//	pause.detachSelf();
+	//	pause.dispose();
+	//	back.detachSelf();
+	//	back.dispose();
 	}
 	
 
