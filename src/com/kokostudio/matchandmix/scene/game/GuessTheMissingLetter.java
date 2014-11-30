@@ -132,7 +132,7 @@ public class GuessTheMissingLetter extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadGTMLScene();
+					SceneManager.getInstance().loadGTMLPanelScene();
 					questionFrame.setScale(1.f);
 					break;
 				}
@@ -318,7 +318,7 @@ public class GuessTheMissingLetter extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							SceneManager.getInstance().loadGTMLPanelScene();
 							questionFrame9.setScale(1.f);
 							break;
 						}

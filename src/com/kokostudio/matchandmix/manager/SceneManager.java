@@ -36,6 +36,9 @@ public class SceneManager {
 	private BaseScene ThatColorIsScene;
 	// GAME PANELS
 	private BaseScene MatchItPanelScene;
+	private BaseScene GTMLPANELScene;
+	private BaseScene COUNTITPANELScene;
+	
 	
 	//---------------------------------
 	// VARIABLES
@@ -60,7 +63,9 @@ public class SceneManager {
 		SCENE_SOLVEIT,
 		SCENE_THATCOLORIS,	
 		//GAME PANEL SCENES
-		SCENE_MATCHITPANEL
+		SCENE_MATCHITPANEL,
+		SCENE_GTMLPANEl,
+		SCENE_COUNTITPANEL
 	}
 	
 	//----------------------------------
@@ -124,6 +129,17 @@ public class SceneManager {
 		setScene(GuessTheMissingLetterScene);
 		
 	}
+	// LOAD GTML  PANEL SCENE
+	public void loadGTMLPanelScene() {
+		// unload the GTML it textures
+		ResourcesManager.getInstance().unloadGTMLPANELResources();
+		// load the GTML PANEL SCENE RESOURCES
+		ResourcesManager.getInstance().loadGTMLPANELResources();
+		GTMLPANELScene = new MatchItPanel();
+		setScene(GTMLPANELScene);	
+	}
+	
+	
 	
 	// MAtch IT SCENE
 	public void loadMatchItScene() {
@@ -190,6 +206,12 @@ public class SceneManager {
 			break;
 		case SCENE_MATCHITPANEL:
 			setScene(MatchItPanelScene);
+			break;
+		case SCENE_GTMLPANEl:
+			setScene(GTMLPANELScene);
+			break;
+		case SCENE_COUNTITPANEL:
+			setScene(COUNTITPANELScene);
 			break;
 		//
 		default:

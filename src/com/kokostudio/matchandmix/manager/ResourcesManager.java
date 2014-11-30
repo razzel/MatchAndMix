@@ -101,20 +101,19 @@ public class ResourcesManager {
 	
 	//// SPLASH SCENE////
 	public void loadSplashScene() {
-	//BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-	//	SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 800, 480);
-	//	SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(SplashTextureAtlas, activity, "loading.png", 10,10);
-	//	SplashTextureAtlas.load();
-		//BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-		//SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
-		//SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(SplashTextureAtlas, activity, "loading.png", 0, 0);
+	/*BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+	SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
+	SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(playMenuTextureAtlas, activity, "loading.png");
+	*/
+	
+	
 		
 		
 	}
 	
 	public void unloadSplashScene() {
-		//SplashTextureAtlas.unload();
-		//SplashTextureRegion = null;
+	//	SplashTextureAtlas.unload();
+	//	SplashTextureRegion = null;
 	}
 	
 	//// PLAY MENU SCENE ////
@@ -314,5 +313,30 @@ public class ResourcesManager {
 	public static ResourcesManager getInstance() {
 		return INSTANCE;
 	}
+
+	public void unloadGTMLPANELResources() {
+		unloadBackground();
+		unloadQuestionFrame();
+		
+	}
+
+	public void loadGTMLPANELResources() {
+		createGeneralBackground();
+		createQuestionEntities();
+		loadGTMLPanelGraphics();
+		loadGTMLItPanelAudio();
+		
+	}
+
+	private void loadGTMLItPanelAudio() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void loadGTMLPanelGraphics() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }
