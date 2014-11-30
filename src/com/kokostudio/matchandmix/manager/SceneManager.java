@@ -116,7 +116,7 @@ public class SceneManager {
 		
 	}
 	
-	public void loadMatchitScene() {
+	public void loadMatchItScene() {
 		// unload the main menu textures
 		ResourcesManager.getInstance().unloadMainMenuTextures();
 		// load the guess the missing letter resources

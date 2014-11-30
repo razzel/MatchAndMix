@@ -235,14 +235,386 @@ public class GuessTheMissingLetter extends BaseScene {
 				};
 				registerTouchArea(questionFrame5);
 				attachChild(questionFrame5);
-		
+				
+				// frame 2
+				questionFrame6 = new ButtonSprite(600, 330, resourcesManager.frameTextureRegion, vbom) {
+					@Override
+					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+						switch(pSceneTouchEvent.getAction()) {
+						case TouchEvent.ACTION_DOWN:
+							questionFrame6.setScale(1.3f);
+							break;
+						case TouchEvent.ACTION_UP:
+							// load guess the missing letter scene
+							// and dispose the main menu scene
+							SceneManager.getInstance().loadGTMLScene();
+							questionFrame6.setScale(1.f);
+							break;
+						}
+						
+						return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+					}
+					
+				};
+				registerTouchArea(questionFrame6);
+				attachChild(questionFrame6);
+				
+				// frame 7
+				questionFrame7 = new ButtonSprite(700, 330, resourcesManager.frameTextureRegion, vbom) {
+					@Override
+					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+						switch(pSceneTouchEvent.getAction()) {
+						case TouchEvent.ACTION_DOWN:
+							questionFrame7.setScale(1.3f);
+							break;
+						case TouchEvent.ACTION_UP:
+							// load guess the missing letter scene
+							// and dispose the main menu scene
+							SceneManager.getInstance().loadGTMLScene();
+							questionFrame7.setScale(1.f);
+							break;
+						}
+						
+						return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+					}
+					
+				};
+				registerTouchArea(questionFrame7);
+				attachChild(questionFrame7);
+				
+			// 2nd line
+				
+				//frame 8
+				questionFrame8 = new ButtonSprite(100, 230, resourcesManager.frameTextureRegion, vbom) {
+					@Override
+					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+						switch(pSceneTouchEvent.getAction()) {
+						case TouchEvent.ACTION_DOWN:
+							questionFrame8.setScale(1.3f);
+							break;
+						case TouchEvent.ACTION_UP:
+							// load guess the missing letter scene
+							// and dispose the main menu scene
+							SceneManager.getInstance().loadGTMLScene();
+							questionFrame8.setScale(1.f);
+							break;
+						}
+						
+						return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+					}
+					
+				};
+				registerTouchArea(questionFrame8);
+				attachChild(questionFrame8);
+				
+				// frame 9
+				questionFrame9 = new ButtonSprite(200, 230, resourcesManager.frameTextureRegion, vbom) {
+					@Override
+					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+						switch(pSceneTouchEvent.getAction()) {
+						case TouchEvent.ACTION_DOWN:
+							questionFrame9.setScale(1.3f);
+							break;
+						case TouchEvent.ACTION_UP:
+							// load guess the missing letter scene
+							// and dispose the main menu scene
+							SceneManager.getInstance().loadGTMLScene();
+							questionFrame9.setScale(1.f);
+							break;
+						}
+						
+						return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+					}
+					
+				};
+				registerTouchArea(questionFrame9);
+				attachChild(questionFrame9);
+
+				// frame 10
+						questionFrame10 = new ButtonSprite(300, 230, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame10.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame10.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame10);
+						attachChild(questionFrame10);
+						
+						// frame 11
+						questionFrame11 = new ButtonSprite(400, 230, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame11.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame11.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame11);
+						attachChild(questionFrame11);
+				
+						// frame 5
+						questionFrame12 = new ButtonSprite(500, 230, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame12.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame12.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame12);
+						attachChild(questionFrame12);
+						
+						// frame 13
+						questionFrame13 = new ButtonSprite(600, 230, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame13.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame13.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame13);
+						attachChild(questionFrame13);
+						
+						// frame 14
+						questionFrame14 = new ButtonSprite(700, 230, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame14.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame14.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame14);
+						attachChild(questionFrame14);
+				
+						
+						//3rd line
+						
+						//frame 15
+						questionFrame15 = new ButtonSprite(100, 130, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame15.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame15.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame15);
+						attachChild(questionFrame15);
+						
+						// frame 16
+						questionFrame16 = new ButtonSprite(200, 130, resourcesManager.frameTextureRegion, vbom) {
+							@Override
+							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+								switch(pSceneTouchEvent.getAction()) {
+								case TouchEvent.ACTION_DOWN:
+									questionFrame16.setScale(1.3f);
+									break;
+								case TouchEvent.ACTION_UP:
+									// load guess the missing letter scene
+									// and dispose the main menu scene
+									SceneManager.getInstance().loadGTMLScene();
+									questionFrame16.setScale(1.f);
+									break;
+								}
+								
+								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+							}
+							
+						};
+						registerTouchArea(questionFrame16);
+						attachChild(questionFrame16);
+
+						// frame 17
+								questionFrame17 = new ButtonSprite(300, 130, resourcesManager.frameTextureRegion, vbom) {
+									@Override
+									public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+										switch(pSceneTouchEvent.getAction()) {
+										case TouchEvent.ACTION_DOWN:
+											questionFrame17.setScale(1.3f);
+											break;
+										case TouchEvent.ACTION_UP:
+											// load guess the missing letter scene
+											// and dispose the main menu scene
+											SceneManager.getInstance().loadGTMLScene();
+											questionFrame17.setScale(1.f);
+											break;
+										}
+										
+										return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+									}
+									
+								};
+								registerTouchArea(questionFrame17);
+								attachChild(questionFrame17);
+								
+								// frame 18
+								questionFrame18 = new ButtonSprite(400, 130, resourcesManager.frameTextureRegion, vbom) {
+									@Override
+									public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+										switch(pSceneTouchEvent.getAction()) {
+										case TouchEvent.ACTION_DOWN:
+											questionFrame18.setScale(1.3f);
+											break;
+										case TouchEvent.ACTION_UP:
+											// load guess the missing letter scene
+											// and dispose the main menu scene
+											SceneManager.getInstance().loadGTMLScene();
+											questionFrame18.setScale(1.f);
+											break;
+										}
+										
+										return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+									}
+									
+								};
+								registerTouchArea(questionFrame18);
+								attachChild(questionFrame18);
+						
+								// frame 19
+								questionFrame19 = new ButtonSprite(500, 130, resourcesManager.frameTextureRegion, vbom) {
+									@Override
+									public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+										switch(pSceneTouchEvent.getAction()) {
+										case TouchEvent.ACTION_DOWN:
+											questionFrame19.setScale(1.3f);
+											break;
+										case TouchEvent.ACTION_UP:
+											// load guess the missing letter scene
+											// and dispose the main menu scene
+											SceneManager.getInstance().loadGTMLScene();
+											questionFrame19.setScale(1.f);
+											break;
+										}
+										
+										return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+									}
+									
+								};
+								registerTouchArea(questionFrame19);
+								attachChild(questionFrame19);
+								
+								// frame 20
+								questionFrame20 = new ButtonSprite(600, 130, resourcesManager.frameTextureRegion, vbom) {
+									@Override
+									public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+										switch(pSceneTouchEvent.getAction()) {
+										case TouchEvent.ACTION_DOWN:
+											questionFrame20.setScale(1.3f);
+											break;
+										case TouchEvent.ACTION_UP:
+											// load guess the missing letter scene
+											// and dispose the main menu scene
+											SceneManager.getInstance().loadGTMLScene();
+											questionFrame20.setScale(1.f);
+											break;
+										}
+										
+										return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+									}
+									
+								};
+								registerTouchArea(questionFrame20);
+								attachChild(questionFrame20);
+								
+								// frame 21
+								questionFrame21 = new ButtonSprite(700, 130, resourcesManager.frameTextureRegion, vbom) {
+									@Override
+									public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+										switch(pSceneTouchEvent.getAction()) {
+										case TouchEvent.ACTION_DOWN:
+											questionFrame21.setScale(1.3f);
+											break;
+										case TouchEvent.ACTION_UP:
+											// load guess the missing letter scene
+											// and dispose the main menu scene
+											SceneManager.getInstance().loadGTMLScene();
+											questionFrame21.setScale(1.f);
+											break;
+										}
+										
+										return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+									}
+									
+								};
+								registerTouchArea(questionFrame21);
+								attachChild(questionFrame21);
 		// QUESTION HEADER
 		qheader = new Sprite(400, 430, resourcesManager.qHeaderTextureRegion, vbom);
 		attachChild(qheader);
 		
 		// BACK BUTTON
 	
-		back = new ButtonSprite(740, 60, resourcesManager.backTextureRegion, vbom) {
+	/*back = new ButtonSprite(740, 60, resourcesManager.backTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
@@ -259,10 +631,11 @@ public class GuessTheMissingLetter extends BaseScene {
 		
 		
 		registerTouchArea(back);
-		
-		
 		attachChild(back);
+		*/
 		camera.setHUD(mainMenuHUD);
+	
 	}
+	
 	
 }
