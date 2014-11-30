@@ -155,7 +155,7 @@ public class MatchIt extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadGTMLScene();
+					////SceneManager.getInstance().loadGTMLScene();
 					questionFrame2.setScale(1.f);
 					break;
 				}
@@ -178,7 +178,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							////SceneManager.getInstance().loadGTMLScene();
 							questionFrame3.setScale(1.f);
 							break;
 						}
@@ -201,7 +201,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							////SceneManager.getInstance().loadGTMLScene();
 							questionFrame4.setScale(1.f);
 							break;
 						}
@@ -224,7 +224,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							////SceneManager.getInstance().loadGTMLScene();
 							questionFrame5.setScale(1.f);
 							break;
 						}
@@ -247,7 +247,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							////SceneManager.getInstance().loadGTMLScene();
 							questionFrame6.setScale(1.f);
 							break;
 						}
@@ -270,7 +270,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							////SceneManager.getInstance().loadGTMLScene();
 							questionFrame7.setScale(1.f);
 							break;
 						}
@@ -295,7 +295,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							////SceneManager.getInstance().loadGTMLScene();
 							questionFrame8.setScale(1.f);
 							break;
 						}
@@ -318,7 +318,7 @@ public class MatchIt extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-							SceneManager.getInstance().loadGTMLScene();
+							//SceneManager.getInstance().loadGTMLScene();
 							questionFrame9.setScale(1.f);
 							break;
 						}
@@ -341,7 +341,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame10.setScale(1.f);
 									break;
 								}
@@ -364,7 +364,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame11.setScale(1.f);
 									break;
 								}
@@ -387,7 +387,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame12.setScale(1.f);
 									break;
 								}
@@ -410,7 +410,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame13.setScale(1.f);
 									break;
 								}
@@ -433,7 +433,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame14.setScale(1.f);
 									break;
 								}
@@ -459,7 +459,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame15.setScale(1.f);
 									break;
 								}
@@ -482,7 +482,7 @@ public class MatchIt extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
-									SceneManager.getInstance().loadGTMLScene();
+									//SceneManager.getInstance().loadGTMLScene();
 									questionFrame16.setScale(1.f);
 									break;
 								}
@@ -505,7 +505,7 @@ public class MatchIt extends BaseScene {
 										case TouchEvent.ACTION_UP:
 											// load guess the missing letter scene
 											// and dispose the main menu scene
-											SceneManager.getInstance().loadGTMLScene();
+											//SceneManager.getInstance().loadGTMLScene();
 											questionFrame17.setScale(1.f);
 											break;
 										}
@@ -528,7 +528,7 @@ public class MatchIt extends BaseScene {
 										case TouchEvent.ACTION_UP:
 											// load guess the missing letter scene
 											// and dispose the main menu scene
-											SceneManager.getInstance().loadGTMLScene();
+											//SceneManager.getInstance().loadGTMLScene();
 											questionFrame18.setScale(1.f);
 											break;
 										}
@@ -551,7 +551,7 @@ public class MatchIt extends BaseScene {
 										case TouchEvent.ACTION_UP:
 											// load guess the missing letter scene
 											// and dispose the main menu scene
-											SceneManager.getInstance().loadGTMLScene();
+											//SceneManager.getInstance().loadGTMLScene();
 											questionFrame19.setScale(1.f);
 											break;
 										}
@@ -574,7 +574,7 @@ public class MatchIt extends BaseScene {
 										case TouchEvent.ACTION_UP:
 											// load guess the missing letter scene
 											// and dispose the main menu scene
-											SceneManager.getInstance().loadGTMLScene();
+											//SceneManager.getInstance().loadGTMLScene();
 											questionFrame20.setScale(1.f);
 											break;
 										}
@@ -597,7 +597,7 @@ public class MatchIt extends BaseScene {
 										case TouchEvent.ACTION_UP:
 											// load guess the missing letter scene
 											// and dispose the main menu scene
-											SceneManager.getInstance().loadGTMLScene();
+											//SceneManager.getInstance().loadGTMLScene();
 											questionFrame21.setScale(1.f);
 											break;
 										}
