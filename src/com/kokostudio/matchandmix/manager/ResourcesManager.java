@@ -105,12 +105,16 @@ public class ResourcesManager {
 	//	SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 800, 480);
 	//	SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(SplashTextureAtlas, activity, "loading.png", 10,10);
 	//	SplashTextureAtlas.load();
+		//BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+		//SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
+		//SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(SplashTextureAtlas, activity, "loading.png", 0, 0);
 		
 		
 	}
 	
 	public void unloadSplashScene() {
-		
+		//SplashTextureAtlas.unload();
+		//SplashTextureRegion = null;
 	}
 	
 	//// PLAY MENU SCENE ////
@@ -196,6 +200,8 @@ public class ResourcesManager {
 	
 	//// MATCH IT !!!! ////
 	public void loadMatchItResources() {
+		createQuestionEntities();
+		createGeneralBackground();
 		loadMatchItGraphics();
 		loadMatchItAudio();
 	}

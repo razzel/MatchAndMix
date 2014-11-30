@@ -10,6 +10,7 @@ import com.kokostudio.matchandmix.scene.MainMenuScene;
 import com.kokostudio.matchandmix.scene.PlayMenuScene;
 import com.kokostudio.matchandmix.scene.SplashScene;
 import com.kokostudio.matchandmix.scene.game.GuessTheMissingLetter;
+import com.kokostudio.matchandmix.scene.game.MatchIt;
 
 public class SceneManager {
 	
@@ -112,6 +113,16 @@ public class SceneManager {
 		ResourcesManager.getInstance().loadGTMLResources();
 		GuessTheMissingLetterScene = new GuessTheMissingLetter();
 		setScene(GuessTheMissingLetterScene);
+		
+	}
+	
+	public void loadMatchitScene() {
+		// unload the main menu textures
+		ResourcesManager.getInstance().unloadMainMenuTextures();
+		// load the guess the missing letter resources
+		ResourcesManager.getInstance().loadMatchItResources();
+		MatchItScene = new MatchIt();
+		setScene(MatchItScene);
 		
 	}
 	//----------------------------------

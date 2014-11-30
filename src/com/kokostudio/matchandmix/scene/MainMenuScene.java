@@ -66,40 +66,6 @@ public class MainMenuScene extends BaseScene {
 	private void createHUD() {
 		mainMenuHUD = new HUD();
 		// Create pause and back button
-		pause = new ButtonSprite(50, 440, resourcesManager.pauseTextureRegion, vbom){
-			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				switch(pSceneTouchEvent.getAction()) {
-				case TouchEvent.ACTION_DOWN:
-					break;
-				case TouchEvent.ACTION_UP:
-					break;
-				}
-				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-			}	
-		};
-		
-		back = new ButtonSprite(740, 60, resourcesManager.backTextureRegion, vbom) {
-			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				switch(pSceneTouchEvent.getAction()) {
-				case TouchEvent.ACTION_DOWN:
-					back.setScale(1.3f);
-					break;
-				case TouchEvent.ACTION_UP:
-					SceneManager.getInstance().loadPlayMenuScene();
-					back.setScale(1.0f);
-					break;
-				}				
-				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-			}				
-		};
-		
-		registerTouchArea(pause);
-		registerTouchArea(back);
-		
-		attachChild(pause);
-		attachChild(back);
 		camera.setHUD(mainMenuHUD);
 	}
 	
@@ -137,7 +103,7 @@ public class MainMenuScene extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess match it
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadGTMLScene();
+					SceneManager.getInstance().loadMatchitScene();
 					matchitTextureRegion.setScale(1.f);
 					break;
 				}
@@ -157,7 +123,7 @@ public class MainMenuScene extends BaseScene {
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
-					solveitTextureRegion.setScale(1.3f);
+					CountitTextureRegion.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
 					// load guess count it
