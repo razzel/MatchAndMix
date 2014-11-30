@@ -21,6 +21,7 @@ public class MainMenuScene extends BaseScene {
 	private ButtonSprite pause;
 	private ButtonSprite about;
 	private ButtonSprite gameGuessTheMissingLetter;
+	private ButtonSprite gameTextureRegion;
 	private ButtonSprite matchitTextureRegion;
 	private ButtonSprite solveitTextureRegion;
 	private ButtonSprite CountitTextureRegion;
@@ -70,18 +71,18 @@ public class MainMenuScene extends BaseScene {
 	}
 	
 	private void createMenuSelection() {
-		gameGuessTheMissingLetter = new ButtonSprite(400, 240, resourcesManager.gameGuessTextureRegion, vbom) {
+		gameTextureRegion = new ButtonSprite(400, 240, resourcesManager.gameTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
-					gameGuessTheMissingLetter.setScale(1.3f);
+					gameTextureRegion.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
 					SceneManager.getInstance().loadGTMLScene();
-					gameGuessTheMissingLetter.setScale(1.f);
+					gameTextureRegion.setScale(1.f);
 					break;
 				}
 				
@@ -89,8 +90,8 @@ public class MainMenuScene extends BaseScene {
 			}
 			
 		};
-		registerTouchArea(gameGuessTheMissingLetter);
-		attachChild(gameGuessTheMissingLetter);
+		registerTouchArea(gameTextureRegion);
+		attachChild(gameTextureRegion);
 		
 		
 		matchitTextureRegion = new ButtonSprite(140, 240, resourcesManager.matchitTextureRegion, vbom) {

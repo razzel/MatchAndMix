@@ -2,6 +2,7 @@ package com.kokostudio.matchandmix.manager;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
+import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
@@ -52,17 +53,26 @@ public class ResourcesManager {
 	public BuildableBitmapTextureAtlas playMenuTextureAtlas;
 	public ITextureRegion playMenuBackgroundTexture;
 	public ITextureRegion playTextureRegion;
-	
-	// MAIN MENU TEXTURES **********************************************
+	//SUPER MAIN MENU
+	public ITextureRegion gameTextureRegion;
+	public ITextureRegion progressTextureRegion;
+	public ITextureRegion OptionTextureRegion;
+	//2nd page
+	public ITextureRegion HowtoplayTextureRegion;
+	public ITextureRegion aboutTextureRegion;
+	public ITextureRegion ExitTextureRegion;
+
+	// MAIN MENU Game TEXTURES **********************************************
 	public BuildableBitmapTextureAtlas mainMenuTextureAtlas;
 	public ITextureRegion pauseTextureRegion;
-	public ITextureRegion aboutTextureRegion;
+	
 	public ITextureRegion gameGuessTextureRegion;
 	public ITextureRegion matchitTextureRegion;
 	public ITextureRegion SolveitTextureRegion;
 	public ITextureRegion CountitTextureRegion;
 	public ITextureRegion backTextureRegion;
 	public ITextureRegion loadingTextureRegion;
+	
 	
 	//-----------------------------
 	// CLASS LOGIC
@@ -165,6 +175,8 @@ public class ResourcesManager {
 		gameGuessTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "guess_the_missing_letter.png");
 		matchitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "mi_btn.png");
 		CountitTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "ci_btn.png");
+		gameTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "games_btn");
+		
 		try {
 			this.mainMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.mainMenuTextureAtlas.load();
