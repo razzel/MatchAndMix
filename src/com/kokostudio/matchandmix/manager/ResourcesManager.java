@@ -71,7 +71,7 @@ public class ResourcesManager {
 	// CREATE GENERAL BACKGROUND AND ENTITIES
 	public void createGeneralBackground() {
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-		bgTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 896, 512);
+		bgTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 1024, 1024);
 		bgTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(bgTextureAtlas, activity, "background.png", 10, 10);
 		bgTextureAtlas.load();
 	}
@@ -215,6 +215,24 @@ public class ResourcesManager {
 	}
 	
 	// UNLOAD
+	public void unloadMatchItResources() {
+		unloadBackground();
+		unloadQuestionFrame();
+	}
+
+		// MATCH IT PANEL
+	public void loadMatchItPanelResources() {
+		createGeneralBackground();
+		createQuestionEntities();
+		loadMatchItPanelGraphics();
+		loadMatchItPanelAudio();
+	}
+	public void loadMatchItPanelGraphics() {
+		
+	}
+	public void loadMatchItPanelAudio() {
+		
+	}
 
 	///// GUESS THE MISSING LETTER !!!! ////
 	public void loadGTMLResources() {
