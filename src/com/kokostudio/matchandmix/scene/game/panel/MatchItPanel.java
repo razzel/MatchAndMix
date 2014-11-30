@@ -12,6 +12,8 @@ import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 public class MatchItPanel extends BaseScene{
 	
 	
+	private HUD mainMenuHUD;
+
 	@Override
 	public void createScene() {
 		// TODO Auto-generated method stub
@@ -22,7 +24,7 @@ public class MatchItPanel extends BaseScene{
 
 	private void createEntities() {
 		// TODO Auto-generated method stub
-		
+		camera.setHUD(mainMenuHUD);
 		
 	}
 
@@ -37,6 +39,7 @@ public class MatchItPanel extends BaseScene{
 			
 		});
 	}
+	
 
 	@Override
 	public void onBackKeyPressed() {
@@ -62,3 +65,6 @@ public class MatchItPanel extends BaseScene{
 	
 
 }
+
+
+
