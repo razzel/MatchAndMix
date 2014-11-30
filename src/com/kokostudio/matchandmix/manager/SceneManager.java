@@ -12,6 +12,8 @@ import com.kokostudio.matchandmix.scene.SplashScene;
 import com.kokostudio.matchandmix.scene.game.GuessTheMissingLetter;
 import com.kokostudio.matchandmix.scene.game.MatchIt;
 
+import com.kokostudio.matchandmix.scene.game.panel.MatchItPanel;
+
 public class SceneManager {
 	
 	//---------------------------------
@@ -32,8 +34,8 @@ public class SceneManager {
 	private BaseScene CountItScene;
 	private BaseScene SolveItScene;
 	private BaseScene ThatColorIsScene;
-	//Panel GAME
-	private BaseScene MatchItPanel;
+	// GAME PANELS
+	private BaseScene MatchItPanelScene;
 	
 	//---------------------------------
 	// VARIABLES
@@ -79,6 +81,7 @@ public class SceneManager {
 		splashScene = null;
 	}
 	
+	
 	// PLAY MENU SCENE
 	public void createPlayMenuScene() {
 		ResourcesManager.getInstance().loadPlayMenuResources();
@@ -107,6 +110,8 @@ public class SceneManager {
 		setScene(mainMenuScene);
 	}
 	
+	
+	
 	// GAMES SCENES MANAGEMENT
 	
 	// GUESS THE MISSING LETTER SCENE
@@ -127,12 +132,21 @@ public class SceneManager {
 		// load the guess the missing letter resources
 		ResourcesManager.getInstance().loadMatchItResources();
 		MatchItScene = new MatchIt();
-		setScene(MatchItScene);
-		
-		
-		
-		
+		setScene(MatchItScene);		
 	}
+	
+		// LOAD MATCH IT PANEL SCENE
+	public void loadMatchItPanelScene() {
+		// unload the match it textures
+		ResourcesManager.getInstance().unloadMatchItResources();
+		// load the MATCH IT PANEL SCENE RESOURCES
+		ResourcesManager.getInstance().loadMatchItPanelResources();
+		MatchItPanelScene = new MatchItPanel();
+		setScene(MatchItPanelScene);	
+	}
+	
+	
+	
 	//----------------------------------
 	// GETTERS AND SETTERS
 	//----------------------------------
@@ -175,25 +189,11 @@ public class SceneManager {
 			setScene(MatchItScene);
 			break;
 		case SCENE_MATCHITPANEL:
-			setScene(MatchItPanel);
+			setScene(MatchItPanelScene);
 			break;
 		//
 		default:
 			break;
 		}
 	}
-
-	public void loadMatchItPanelScene() {
-		// unload the main menu textures
-		ResourcesManager.getInstance().unloadMainMenuTextures();
-		// load the guess the missing letter resources
-		ResourcesManager.getInstance().loadMatchItResources();
-		MatchItPanel = new MatchIt();
-		setScene(MatchItPanel);
-		
-		
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
