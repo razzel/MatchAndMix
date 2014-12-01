@@ -2,7 +2,6 @@ package com.kokostudio.matchandmix.manager;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
-import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
@@ -53,26 +52,24 @@ public class ResourcesManager {
 	public BuildableBitmapTextureAtlas playMenuTextureAtlas;
 	public ITextureRegion playMenuBackgroundTexture;
 	public ITextureRegion playTextureRegion;
-	//SUPER MAIN MENU
-	public ITextureRegion gameTextureRegion;
-	public ITextureRegion progressTextureRegion;
-	public ITextureRegion OptionTextureRegion;
-	//2nd page
-	public ITextureRegion HowtoplayTextureRegion;
-	public ITextureRegion aboutTextureRegion;
-	public ITextureRegion ExitTextureRegion;
-
-	// MAIN MENU Game TEXTURES **********************************************
+	
+	// MAIN MENU TEXTURES **********************************************
 	public BuildableBitmapTextureAtlas mainMenuTextureAtlas;
 	public ITextureRegion pauseTextureRegion;
-	
+	public ITextureRegion aboutTextureRegion;
 	public ITextureRegion gameGuessTextureRegion;
 	public ITextureRegion matchitTextureRegion;
 	public ITextureRegion SolveitTextureRegion;
 	public ITextureRegion CountitTextureRegion;
 	public ITextureRegion backTextureRegion;
 	public ITextureRegion loadingTextureRegion;
-	
+	public ITextureRegion gamesTextureRegion;
+	public ITextureRegion menuheaderTextureRegion;
+	public ITextureRegion ProgressTextureRegion;
+	public ITextureRegion OptionTextureRegion;
+	public ITextureRegion nextTextureRegion;
+	public ITextureRegion PrevTextureRegion;
+
 	
 	//-----------------------------
 	// CLASS LOGIC
@@ -165,7 +162,14 @@ public class ResourcesManager {
 		loadMainMenuAudio();
 		createGeneralBackground();
 	}
-	
+	public void loadnextGraphics(){
+		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main");
+		
+		
+		
+		
+		
+	}
 	public void loadMainMenuGraphics() {
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main/");
 		mainMenuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
@@ -175,8 +179,12 @@ public class ResourcesManager {
 		gameGuessTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "guess_the_missing_letter.png");
 		matchitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "mi_btn.png");
 		CountitTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "ci_btn.png");
-		gameTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "games_btn");
-		
+		gamesTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "games_btn.png");
+		menuheaderTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "menu_header.png");
+		ProgressTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "progress_btn.png");
+		OptionTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "option_btn.png");
+		nextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "next_btn.png");
+		PrevTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "prev_btn.png");
 		try {
 			this.mainMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.mainMenuTextureAtlas.load();
@@ -349,6 +357,17 @@ public class ResourcesManager {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	public void loadnextResources() {
+		// TODO Auto-generated method stub
+		createGeneralBackground();
+		createQuestionEntities();
+	}
+
+	
+
 	
 	
 }

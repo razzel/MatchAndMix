@@ -21,10 +21,18 @@ public class MainMenuScene extends BaseScene {
 	private ButtonSprite pause;
 	private ButtonSprite about;
 	private ButtonSprite gameGuessTheMissingLetter;
-	private ButtonSprite gameTextureRegion;
 	private ButtonSprite matchitTextureRegion;
 	private ButtonSprite solveitTextureRegion;
 	private ButtonSprite CountitTextureRegion;
+	private ButtonSprite games;
+	private ButtonSprite progress;
+	private ButtonSprite option;
+	private ButtonSprite next;
+	private ButtonSprite prev;
+	
+	
+	private Sprite menuheader;
+	
 	@Override
 	public void createScene() {
 		createBackground();
@@ -71,18 +79,19 @@ public class MainMenuScene extends BaseScene {
 	}
 	
 	private void createMenuSelection() {
-		gameTextureRegion = new ButtonSprite(400, 240, resourcesManager.gameTextureRegion, vbom) {
+		//games
+		games = new ButtonSprite(180, 240, resourcesManager.gamesTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
-					gameTextureRegion.setScale(1.3f);
+					games.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadGTMLScene();
-					gameTextureRegion.setScale(1.f);
+				//	SceneManager.getInstance().loadGTMLScene();
+					games.setScale(1.f);
 					break;
 				}
 				
@@ -90,22 +99,23 @@ public class MainMenuScene extends BaseScene {
 			}
 			
 		};
-		registerTouchArea(gameTextureRegion);
-		attachChild(gameTextureRegion);
+		registerTouchArea(games);
+		attachChild(games);
 		
 		
-		matchitTextureRegion = new ButtonSprite(140, 240, resourcesManager.matchitTextureRegion, vbom) {
+		//progress
+		progress = new ButtonSprite(400, 240, resourcesManager.ProgressTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
-					matchitTextureRegion.setScale(1.3f);
+					progress.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
-					// load guess match it
+					// load guess the missing letter scene
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadMatchItScene();
-					matchitTextureRegion.setScale(1.f);
+				//	SceneManager.getInstance().loadGTMLScene();
+					progress.setScale(1.f);
 					break;
 				}
 				
@@ -113,24 +123,22 @@ public class MainMenuScene extends BaseScene {
 			}
 			
 		};
+		registerTouchArea(progress);
+		attachChild(progress);
 		
-		registerTouchArea(matchitTextureRegion);
-		attachChild(matchitTextureRegion);
 		
-		// Count IT
-		
-		CountitTextureRegion = new ButtonSprite(640, 240, resourcesManager.CountitTextureRegion, vbom) {
+		option = new ButtonSprite(620, 240, resourcesManager.OptionTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
-					CountitTextureRegion.setScale(1.3f);
+					option.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
-					// load guess count it
+					// load guess the missing letter scene
 					// and dispose the main menu scene
-					SceneManager.getInstance().loadGTMLScene();
-					CountitTextureRegion.setScale(1.f);
+				//	SceneManager.getInstance().loadGTMLScene();
+					option.setScale(1.f);
 					break;
 				}
 				
@@ -138,11 +146,70 @@ public class MainMenuScene extends BaseScene {
 			}
 			
 		};
-		registerTouchArea(CountitTextureRegion);
-		attachChild(CountitTextureRegion);
-	}
+		registerTouchArea(option);
+		attachChild(option);
+		
+		
+		
+		
+		
+		//Next
+		next = new ButtonSprite(760, 220, resourcesManager.nextTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					next.setScale(1.3f);
+					break;
+				case TouchEvent.ACTION_UP:
+					// load guess the missing letter scene
+					// and dispose the main menu scene
+					SceneManager.getInstance().loadnextResources();
+					next.setScale(1.f);
+					break;
+				}
+				
+				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+			}
+			
+		};
+		registerTouchArea(next);
+		attachChild(next);
+		
+		
+		
+		
+		//Previous
+				prev = new ButtonSprite(40, 220, resourcesManager.PrevTextureRegion, vbom) {
+					@Override
+					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+						switch(pSceneTouchEvent.getAction()) {
+						case TouchEvent.ACTION_DOWN:
+							prev.setScale(1.3f);
+							break;
+						case TouchEvent.ACTION_UP:
+							// load guess the missing letter scene
+							// and dispose the main menu scene
+						//	SceneManager.getInstance().loadGTMLScene();
+							prev.setScale(1.f);
+							break;
+						}
+						
+						return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+					}
+					
+				};
+				registerTouchArea(prev);
+				attachChild(prev);
+		
+		
+		menuheader = new Sprite(400, 430, resourcesManager.menuheaderTextureRegion, vbom);
+		attachChild(menuheader);
+		
+			}
 	
-	
-	
-
 }
+
+
+
+
