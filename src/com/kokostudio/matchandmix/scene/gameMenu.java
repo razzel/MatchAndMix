@@ -13,7 +13,7 @@ import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 
 
-public class MainMenuScene2 extends BaseScene {
+public class gameMenu extends BaseScene {
 	
 	private HUD mainMenuHUD;
 	
@@ -45,7 +45,7 @@ public class MainMenuScene2 extends BaseScene {
 
 	@Override
 	public SceneType getSceneType() {
-		return SceneType.SCENE_MAINMENU2;
+		return SceneType.SCENE_gameMenu;
 	}
 
 	@Override
@@ -79,8 +79,6 @@ public class MainMenuScene2 extends BaseScene {
 	}
 	
 	private void createMenuSelection() {
-		
-		
 
 			}
 	

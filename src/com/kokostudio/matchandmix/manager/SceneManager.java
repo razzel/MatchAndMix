@@ -27,7 +27,7 @@ public class SceneManager {
 	private BaseScene optionScene;
 	private BaseScene aboutScene;
 	private BaseScene next;
-	private BaseScene menu2;
+	private BaseScene MainMenu2Scene;
 	private BaseScene loadingScene;
 	
 	// GAMES
@@ -61,6 +61,7 @@ public class SceneManager {
 		SCENE_LOADING,
 		SCENE_NEXT,
 		SCENE_MAINMENU2,
+		SCENE_gameMenu,
 		//GAME SCENES
 		SCENE_MATCHIT,
 		SCENE_GTML,
@@ -146,12 +147,12 @@ public class SceneManager {
 	}
 	
 	public void loadnextScene() {
-		// unload the GTML it textures
-		ResourcesManager.getInstance().unloadMainMenuTextures();
-		// load the GTML PANEL SCENE RESOURCES
-		ResourcesManager.getInstance().loadnextResources();
-		next = new MainMenuScene2();
-		setScene(next);	
+		// unload the play menu texture
+		ResourcesManager.getInstance().unloadPlayMenuTextures();	
+		// load the main menu texture
+		ResourcesManager.getInstance().loadMainMenuResources();
+		mainMenuScene = new MainMenuScene2();
+		setScene(mainMenuScene);
 	}
 	
 	
@@ -231,7 +232,7 @@ public class SceneManager {
 			setScene(next);
 			break;
 		case SCENE_MAINMENU2:
-			setScene(menu2);
+			setScene(MainMenu2Scene);
 			break;
 		//
 		default:
