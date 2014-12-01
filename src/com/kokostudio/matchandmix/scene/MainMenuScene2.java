@@ -80,7 +80,10 @@ public class MainMenuScene2 extends BaseScene {
 	}
 	
 	private void createMenuSelection() {
+		resourcesManager.playMenuSound.play();
+		resourcesManager.playMenuSound.setLooping(true);		
 		howtoplay = new ButtonSprite(180, 240, resourcesManager.howtoplayTextureRegion, vbom) {
+			
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
@@ -194,6 +197,7 @@ public class MainMenuScene2 extends BaseScene {
 								case TouchEvent.ACTION_UP:
 									// load guess the missing letter scene
 									// and dispose the main menu scene
+									resourcesManager.playMenuSound.stop();
 									SceneManager.getInstance().loadMainMenuScene();
 									prev.setScale(1.f);
 									break;

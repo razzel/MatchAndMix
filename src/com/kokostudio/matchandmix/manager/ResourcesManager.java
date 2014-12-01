@@ -1,5 +1,9 @@
 package com.kokostudio.matchandmix.manager;
 
+import java.io.IOException;
+
+import org.andengine.audio.sound.Sound;
+import org.andengine.audio.sound.SoundFactory;
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.TextureOptions;
@@ -9,10 +13,11 @@ import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
 import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
 import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder.TextureAtlasBuilderException;
+import org.andengine.opengl.texture.bitmap.AssetBitmapTexture;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.opengl.texture.region.TextureRegionFactory;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
-
 import com.kokostudio.matchandmix.GameActivity;
 
 
@@ -41,7 +46,7 @@ public class ResourcesManager {
 	public ITextureRegion frameTextureRegion;
 	public ITextureRegion qHeaderTextureRegion;
 	public ITextureRegion backTexture;
-	
+	public Sound playMenuSound;
 	
 	// Splash Textures
 	public BitmapTextureAtlas SplashTextureAtlas;
@@ -146,9 +151,7 @@ public class ResourcesManager {
 		}
 	}
 	
-	public void loadPlayMenuAudio() {
-		
-	}
+	
 	
 	public void loadPlayMenuTextures() {
 		playMenuTextureAtlas.load();
@@ -377,6 +380,23 @@ public class ResourcesManager {
 		createGeneralBackground();
 		createQuestionEntities();
 	}
+	
+	
+	
+
+
+
+	// TAPOS LAGAY MO TO SA loadPlayMenuAudio()
+	public void loadPlayMenuAudio() {
+		SoundFactory.setAssetBasePath("mfx/");
+		try {
+			playMenuSound = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "bg_music.mp3");
+		} catch(final IOException e) {
+			Debug.e(e);
+		}
+	}
+
+
 
 	
 

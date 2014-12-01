@@ -68,6 +68,7 @@ public class MainMenuScene extends BaseScene {
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
 				pGLState.enableDither();
+				
 			}		
 		});	
 	}
@@ -80,6 +81,11 @@ public class MainMenuScene extends BaseScene {
 	
 	private void createMenuSelection() {
 		//games
+	
+		
+		resourcesManager.playMenuSound.play();
+		resourcesManager.playMenuSound.setLooping(true);
+
 		games = new ButtonSprite(180, 240, resourcesManager.gamesTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
@@ -154,17 +160,22 @@ public class MainMenuScene extends BaseScene {
 		
 		
 		//Next
+		
 		next = new ButtonSprite(760, 220, resourcesManager.nextTextureRegion, vbom) {
+			
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
+				
 				case TouchEvent.ACTION_DOWN:
 					next.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
+					resourcesManager.playMenuSound.stop();
 					SceneManager.getInstance().loadnextScene();
+					
 					next.setScale(1.f);
 					break;
 				}

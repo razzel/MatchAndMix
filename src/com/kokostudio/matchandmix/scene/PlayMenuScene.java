@@ -1,5 +1,6 @@
 package com.kokostudio.matchandmix.scene;
 
+import org.andengine.audio.sound.Sound;
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
@@ -15,6 +16,7 @@ import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 
 public class PlayMenuScene extends BaseScene {
 	
+	private Sound sound;
 	private ButtonSprite play;
 	
 	private void createBackground() {
@@ -33,6 +35,7 @@ public class PlayMenuScene extends BaseScene {
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
+					//
 					play.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
@@ -43,6 +46,7 @@ public class PlayMenuScene extends BaseScene {
 				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
 			}	
 		};
+		
 		registerTouchArea(play);
 		attachChild(play);
 	}
@@ -51,6 +55,7 @@ public class PlayMenuScene extends BaseScene {
 	public void createScene() {
 		createBackground();
 		createButton();
+
 	}
 
 	@Override
