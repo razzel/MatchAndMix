@@ -67,6 +67,8 @@ public class ResourcesManager {
 	public ITextureRegion menuheaderTextureRegion;
 	public ITextureRegion ProgressTextureRegion;
 	public ITextureRegion OptionTextureRegion;
+	public ITextureRegion howtoplayTextureRegion;
+	public ITextureRegion exitTextureRegion;
 	public ITextureRegion nextTextureRegion;
 	public ITextureRegion PrevTextureRegion;
 
@@ -183,6 +185,9 @@ public class ResourcesManager {
 		menuheaderTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "menu_header.png");
 		ProgressTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "progress_btn.png");
 		OptionTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "option_btn.png");
+		howtoplayTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "how_btn.png");
+		aboutTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_btn.png");
+		exitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity,"exit_btn.png");
 		nextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "next_btn.png");
 		PrevTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "prev_btn.png");
 		try {
