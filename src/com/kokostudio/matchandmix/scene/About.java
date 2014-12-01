@@ -55,8 +55,8 @@ public class About extends BaseScene {
 		camera.setCenter(400, 240);
 		pause.detachSelf();
 		pause.dispose();
-		back.detachSelf();
-		back.dispose();
+		//back.detachSelf();
+		//back.dispose();
 	}
 	
 	//------------------------------------------------------
@@ -78,11 +78,31 @@ public class About extends BaseScene {
 		// Create pause and back button
 		camera.setHUD(mainMenuHUD);
 
-		menuheader = new Sprite(400, 430, resourcesManager.menuheaderTextureRegion, vbom);
-		attachChild(menuheader);
+		
 	}
 	
 	private void createMenuSelection() {
+		back = new ButtonSprite(760, 140, resourcesManager.backTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					back.setScale(1.3f);
+					break;
+				case TouchEvent.ACTION_UP:
+					// load guess the missing letter scene
+					// and dispose the main menu scene
+					SceneManager.getInstance().loadMainMenuScene();
+					back.setScale(1.f);
+					break;
+				}
+				
+				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+			}
+			
+		};
+		registerTouchArea(back);
+		attachChild(back);
 
 		
 			}
