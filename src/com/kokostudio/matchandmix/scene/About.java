@@ -13,30 +13,20 @@ import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 
 
+
 public class About extends BaseScene {
 	
 	private HUD mainMenuHUD;
 	
 	private ButtonSprite back;
 	private ButtonSprite pause;
-
-	private ButtonSprite gameGuessTheMissingLetter;
-	private ButtonSprite matchitTextureRegion;
-	private ButtonSprite solveitTextureRegion;
-	private ButtonSprite CountitTextureRegion;
-	private ButtonSprite games;
-	private ButtonSprite progress;
-	private ButtonSprite option;
-	private ButtonSprite next;
-	private ButtonSprite prev;
-	
-	
-	private Sprite menuheader;
+	private Sprite aboutpanel;
 	
 	@Override
 	public void createScene() {
 		createBackground();
 		createMenuSelection();
+	createaboutpanelscene();
 		createHUD();
 	}
 
@@ -82,7 +72,7 @@ public class About extends BaseScene {
 	}
 	
 	private void createMenuSelection() {
-		back = new ButtonSprite(760, 140, resourcesManager.backTextureRegion, vbom) {
+		back = new ButtonSprite(50, 50, resourcesManager.backTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
@@ -92,6 +82,7 @@ public class About extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
+					
 					SceneManager.getInstance().loadMainMenuScene();
 					back.setScale(1.f);
 					break;
@@ -103,10 +94,14 @@ public class About extends BaseScene {
 		};
 		registerTouchArea(back);
 		attachChild(back);
-
-		
 			}
 	
+	//about Panel Scene
+		public void createaboutpanelscene(){
+			aboutpanel = new Sprite(400, 220, resourcesManager.aboutpanelTextureRegion, vbom);
+			attachChild(aboutpanel);
+		}
+		
 }
 
 

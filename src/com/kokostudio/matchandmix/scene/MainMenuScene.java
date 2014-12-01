@@ -8,6 +8,9 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 
 
+import android.content.Intent;
+import android.net.Uri;
+
 import com.kokostudio.matchandmix.base.BaseScene;
 import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
@@ -96,6 +99,7 @@ public class MainMenuScene extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
+					resourcesManager.playMenuSound.stop();
 				SceneManager.getInstance().loadaboutScene();
 					games.setScale(1.f);
 					break;
@@ -122,6 +126,7 @@ public class MainMenuScene extends BaseScene {
 					// and dispose the main menu scene
 				//	SceneManager.getInstance().loadGTMLScene();
 					progress.setScale(1.f);
+					resourcesManager.playMenuSound.stop();
 					break;
 				}
 				
@@ -144,12 +149,19 @@ public class MainMenuScene extends BaseScene {
 					// load guess the missing letter scene
 					// and dispose the main menu scene
 				//	SceneManager.getInstance().loadGTMLScene();
+					String url = "https://www.facebook.com/matchandmixPinoy";
+					Intent i = new Intent(Intent.ACTION_VIEW);
+					i.setData(Uri.parse(url));
+					//startActivity(i);
+					resourcesManager.playMenuSound.stop();
 					option.setScale(1.f);
 					break;
 				}
 				
 				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
 			}
+
+		
 			
 		};
 		registerTouchArea(option);

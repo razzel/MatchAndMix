@@ -182,7 +182,7 @@ public class SceneManager {
 		// unload the play menu texture
 		ResourcesManager.getInstance().unloadMainMenuTextures();	
 		// load the main menu texture
-		ResourcesManager.getInstance().loadAboutResources();
+		ResourcesManager.getInstance().loadAboutPanelResources();
 		aboutScene = new About();
 		setScene(aboutScene);
 	}

@@ -46,13 +46,18 @@ public class ResourcesManager {
 	public ITextureRegion frameTextureRegion;
 	public ITextureRegion qHeaderTextureRegion;
 	public ITextureRegion backTexture;
+	
+	//Sounds
 	public Sound playMenuSound;
 	
 	// Splash Textures
 	public BitmapTextureAtlas SplashTextureAtlas;
 	public ITextureRegion SplashTextureRegion;
 	
-
+	// ABOUT PANELS ***********************************************
+	public BuildableBitmapTextureAtlas AboutSceneTextureAtlas;
+	public ITextureRegion aboutpanelTextureRegion;
+	
 	// PLAY MENU TEXTURES **********************************************
 	public BuildableBitmapTextureAtlas playMenuTextureAtlas;
 	public ITextureRegion playMenuBackgroundTexture;
@@ -78,7 +83,7 @@ public class ResourcesManager {
 	public ITextureRegion nextTextureRegion;
 	public ITextureRegion PrevTextureRegion;
 
-	
+
 	//-----------------------------
 	// CLASS LOGIC
 	//-----------------------------
@@ -194,7 +199,7 @@ public class ResourcesManager {
 		exitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity,"exit_btn.png");
 		nextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "next_btn.png");
 		PrevTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "prev_btn.png");
-		//aboutTextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_panel.png");
+		//aboutpanelTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_panel.png");
 		try {
 			this.mainMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.mainMenuTextureAtlas.load();
@@ -218,6 +223,12 @@ public class ResourcesManager {
 	// OPTION SCENE
 	
 	// ABOUT SCENE
+	
+	public void loadAboutPanelResources(){
+		loadAboutPanel();
+		
+		
+	}
 	
 	//------------------------------------------------------------------------
 	// GAMES LOADING TEXTURE AREA
@@ -395,7 +406,26 @@ public class ResourcesManager {
 			Debug.e(e);
 		}
 	}
-
+// About Panel
+	public void loadAboutPanel(){
+		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main/");
+		AboutSceneTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
+		aboutpanelTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(AboutSceneTextureAtlas, activity, "about_panel.png");
+		backTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(AboutSceneTextureAtlas, activity, "back_btn.png");
+		try {
+			this.AboutSceneTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
+			this.AboutSceneTextureAtlas.load();
+		} catch(final TextureAtlasBuilderException e) {
+			Debug.e(e);
+		}
+		
+		//AboutSceneTextureAtlas.load();
+		
+	}
+	
+	public void unloadAboutPanel(){
+		AboutSceneTextureAtlas.unload();
+	}
 
 
 	
