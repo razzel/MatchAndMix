@@ -103,7 +103,7 @@ public class MainMenuScene2 extends BaseScene {
 		attachChild(howtoplay);
 		
 		
-		//progress
+		//about
 				about = new ButtonSprite(400, 240, resourcesManager.aboutTextureRegion, vbom) {
 					@Override
 					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
@@ -114,7 +114,7 @@ public class MainMenuScene2 extends BaseScene {
 						case TouchEvent.ACTION_UP:
 							// load guess the missing letter scene
 							// and dispose the main menu scene
-						//	SceneManager.getInstance().loadGTMLScene();
+							SceneManager.getInstance().loadaboutScene();
 							System.out.print("About MAtch and Mix!");
 							about.setScale(1.f);
 							break;

@@ -13,13 +13,13 @@ import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 
 
-public class gameMenu extends BaseScene {
+public class About extends BaseScene {
 	
 	private HUD mainMenuHUD;
 	
 	private ButtonSprite back;
 	private ButtonSprite pause;
-	private ButtonSprite about;
+
 	private ButtonSprite gameGuessTheMissingLetter;
 	private ButtonSprite matchitTextureRegion;
 	private ButtonSprite solveitTextureRegion;
@@ -43,9 +43,10 @@ public class gameMenu extends BaseScene {
 	@Override
 	public void onBackKeyPressed() { }
 
+	
 	@Override
 	public SceneType getSceneType() {
-		return SceneType.SCENE_gameMenu;
+		return SceneType.SCENE_ABOUT;
 	}
 
 	@Override
@@ -76,10 +77,14 @@ public class gameMenu extends BaseScene {
 		mainMenuHUD = new HUD();
 		// Create pause and back button
 		camera.setHUD(mainMenuHUD);
+
+		menuheader = new Sprite(400, 430, resourcesManager.menuheaderTextureRegion, vbom);
+		attachChild(menuheader);
 	}
 	
 	private void createMenuSelection() {
 
+		
 			}
 	
 }

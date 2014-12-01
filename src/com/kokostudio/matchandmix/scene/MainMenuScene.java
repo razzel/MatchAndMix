@@ -90,7 +90,7 @@ public class MainMenuScene extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-				//	SceneManager.getInstance().loadGTMLScene();
+				SceneManager.getInstance().loadaboutScene();
 					games.setScale(1.f);
 					break;
 				}

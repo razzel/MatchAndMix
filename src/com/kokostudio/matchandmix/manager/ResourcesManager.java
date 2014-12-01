@@ -57,6 +57,7 @@ public class ResourcesManager {
 	public BuildableBitmapTextureAtlas mainMenuTextureAtlas;
 	public ITextureRegion pauseTextureRegion;
 	public ITextureRegion aboutTextureRegion;
+	public ITextureRegion about2TextureRegion;
 	public ITextureRegion gameGuessTextureRegion;
 	public ITextureRegion matchitTextureRegion;
 	public ITextureRegion SolveitTextureRegion;
@@ -165,7 +166,7 @@ public class ResourcesManager {
 		createGeneralBackground();
 	}
 	public void loadnextGraphics(){
-		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main");
+	//	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main");
 		
 		
 		
@@ -177,7 +178,7 @@ public class ResourcesManager {
 		mainMenuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
 		pauseTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "pause.png");
 		backTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "back.png");
-		//aboutTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about.png");
+		//about2TextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_panel.png");
 		gameGuessTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "guess_the_missing_letter.png");
 		matchitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "mi_btn.png");
 		CountitTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "ci_btn.png");
@@ -190,6 +191,7 @@ public class ResourcesManager {
 		exitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity,"exit_btn.png");
 		nextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "next_btn.png");
 		PrevTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "prev_btn.png");
+		//aboutTextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_panel.png");
 		try {
 			this.mainMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.mainMenuTextureAtlas.load();
@@ -319,6 +321,11 @@ public class ResourcesManager {
 	}
 	
 	public void loadThatColorIsAudio() {
+		
+	}
+	public void loadAboutResources(){
+		createQuestionEntities();
+		createGeneralBackground();
 		
 	}
 	

@@ -6,10 +6,12 @@ import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
 import com.kokostudio.matchandmix.base.BaseScene;
+import com.kokostudio.matchandmix.scene.About;
 import com.kokostudio.matchandmix.scene.MainMenuScene;
 import com.kokostudio.matchandmix.scene.MainMenuScene2;
 import com.kokostudio.matchandmix.scene.PlayMenuScene;
 import com.kokostudio.matchandmix.scene.SplashScene;
+
 import com.kokostudio.matchandmix.scene.game.GuessTheMissingLetter;
 import com.kokostudio.matchandmix.scene.game.MatchIt;
 
@@ -175,7 +177,15 @@ public class SceneManager {
 		MatchItPanelScene = new MatchItPanel();
 		setScene(MatchItPanelScene);	
 	}
-	
+	// ABOUT
+	public void loadaboutScene() {
+		// unload the play menu texture
+		ResourcesManager.getInstance().unloadMainMenuTextures();	
+		// load the main menu texture
+		ResourcesManager.getInstance().loadAboutResources();
+		aboutScene = new About();
+		setScene(aboutScene);
+	}
 	
 	
 	//----------------------------------
@@ -233,6 +243,9 @@ public class SceneManager {
 			break;
 		case SCENE_MAINMENU2:
 			setScene(MainMenu2Scene);
+			break;
+		case SCENE_ABOUT:
+			setScene(aboutScene);
 			break;
 		//
 		default:
