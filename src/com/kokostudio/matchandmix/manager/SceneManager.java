@@ -8,7 +8,7 @@ import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 import com.kokostudio.matchandmix.base.BaseScene;
 import com.kokostudio.matchandmix.scene.About;
 import com.kokostudio.matchandmix.scene.MainMenuScene;
-import com.kokostudio.matchandmix.scene.MainMenuScene2;
+import com.kokostudio.matchandmix.scene.GameMenuScene;
 import com.kokostudio.matchandmix.scene.PlayMenuScene;
 import com.kokostudio.matchandmix.scene.SplashScene;
 
@@ -29,7 +29,7 @@ public class SceneManager {
 	private BaseScene optionScene;
 	private BaseScene aboutScene;
 	private BaseScene next;
-	private BaseScene MainMenu2Scene;
+	private BaseScene GameMenuScene;
 	private BaseScene loadingScene;
 	
 	// GAMES
@@ -62,8 +62,7 @@ public class SceneManager {
 		SCENE_ABOUT,
 		SCENE_LOADING,
 		SCENE_NEXT,
-		SCENE_MAINMENU2,
-		SCENE_gameMenu,
+		SCENE_GAMEMENU,
 		//GAME SCENES
 		SCENE_MATCHIT,
 		SCENE_GTML,
@@ -124,6 +123,15 @@ public class SceneManager {
 		setScene(mainMenuScene);
 	}
 	
+	// gameMenu
+	public void loadGameMenuScene() {
+		// unload the play menu texture
+		ResourcesManager.getInstance().unloadPlayMenuTextures();	
+		// load the main menu texture
+		ResourcesManager.getInstance().loadMainMenuResources();
+		GameMenuScene = new GameMenuScene();
+		setScene(GameMenuScene);
+	}
 	
 	
 	// GAMES SCENES MANAGEMENT
@@ -153,7 +161,7 @@ public class SceneManager {
 		ResourcesManager.getInstance().unloadPlayMenuTextures();	
 		// load the main menu texture
 		ResourcesManager.getInstance().loadMainMenuResources();
-		mainMenuScene = new MainMenuScene2();
+		mainMenuScene = new GameMenuScene();
 		setScene(mainMenuScene);
 	}
 	
@@ -241,8 +249,8 @@ public class SceneManager {
 		case SCENE_NEXT:
 			setScene(next);
 			break;
-		case SCENE_MAINMENU2:
-			setScene(MainMenu2Scene);
+		case SCENE_GAMEMENU:
+			setScene(GameMenuScene);
 			break;
 		case SCENE_ABOUT:
 			setScene(aboutScene);

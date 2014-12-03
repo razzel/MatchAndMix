@@ -112,7 +112,7 @@ public class MainMenuScene extends BaseScene {
 					// load guess the missing letter scene
 					// and dispose the main menu scene
 					resourcesManager.playMenuSound.stop();
-				SceneManager.getInstance().loadaboutScene();
+				SceneManager.getInstance().loadGameMenuScene();
 					games.setScale(1.f);
 					break;
 				}
@@ -176,13 +176,7 @@ public class MainMenuScene extends BaseScene {
 		};
 		registerTouchArea(option);
 		attachChild(option);
-		
-		
-		
-		
-		
 	
-				
 				//how to play
 				howtoplay = new ButtonSprite(180, 240, resourcesManager.howtoplayTextureRegion, vbom) {
 					
