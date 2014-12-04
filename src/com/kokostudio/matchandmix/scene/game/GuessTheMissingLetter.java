@@ -612,9 +612,7 @@ public class GuessTheMissingLetter extends BaseScene {
 		qheader = new Sprite(400, 430, resourcesManager.qHeaderTextureRegion, vbom);
 		attachChild(qheader);
 		
-		// BACK BUTTON
-	
-	/*back = new ButtonSprite(740, 60, resourcesManager.backTextureRegion, vbom) {
+		back = new ButtonSprite(50, 50, resourcesManager.backTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
@@ -622,17 +620,21 @@ public class GuessTheMissingLetter extends BaseScene {
 					back.setScale(1.3f);
 					break;
 				case TouchEvent.ACTION_UP:
-					SceneManager.getInstance().loadPlayMenuScene();
-					back.setScale(1.0f);
-				}				
+					// load guess the missing letter scene
+					// and dispose the main menu scene
+					
+					SceneManager.getInstance().loadMainMenuScene();
+					back.setScale(1.f);
+					break;
+				}
+				
 				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-			}				
+			}
+			
 		};
-		
-		
 		registerTouchArea(back);
 		attachChild(back);
-		*/
+			
 		camera.setHUD(mainMenuHUD);
 	
 	}

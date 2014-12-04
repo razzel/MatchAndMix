@@ -98,8 +98,8 @@ public class MainMenuScene extends BaseScene {
 	
 	private void createMenuSelection() {
 		//games
-		resourcesManager.playMenuSound.play();
-		resourcesManager.playMenuSound.setLooping(true);
+		this.resourcesManager.playMenuSound.play();
+		this.resourcesManager.playMenuSound.setLooping(true);
 
 		games = new ButtonSprite(180, 240, resourcesManager.gamesTextureRegion, vbom) {
 			@Override
@@ -111,7 +111,7 @@ public class MainMenuScene extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-					resourcesManager.playMenuSound.stop();
+					resourcesManager.playMenuSound.pause();
 				SceneManager.getInstance().loadGameMenuScene();
 					games.setScale(1.f);
 					break;
@@ -138,7 +138,7 @@ public class MainMenuScene extends BaseScene {
 					// and dispose the main menu scene
 				//	SceneManager.getInstance().loadGTMLScene();
 					progress.setScale(1.f);
-					resourcesManager.playMenuSound.stop();
+					resourcesManager.playMenuSound.pause();
 					break;
 				}
 				
@@ -162,7 +162,7 @@ public class MainMenuScene extends BaseScene {
 					// and dispose the main menu scene
 				//	SceneManager.getInstance().loadGTMLScene
 					//startActivity(i);
-					resourcesManager.playMenuSound.stop();
+					resourcesManager.playMenuSound.pause();
 					next.setVisible(true);
 					option.setScale(1.f);
 					break;
@@ -187,7 +187,7 @@ public class MainMenuScene extends BaseScene {
 							howtoplay.setScale(1.3f);
 							break;
 						case TouchEvent.ACTION_UP:
-							resourcesManager.playMenuSound.stop();
+							resourcesManager.playMenuSound.pause();
 							howtoplay.setScale(1.f);
 							break;
 						}
@@ -212,7 +212,7 @@ public class MainMenuScene extends BaseScene {
 									// load guess the missing letter scene
 									// and dispose the main menu scene
 									SceneManager.getInstance().loadaboutScene();
-									resourcesManager.playMenuSound.stop();
+									resourcesManager.playMenuSound.pause();
 									System.out.print("About MAtch and Mix!");
 									about.setScale(1.f);
 									break;

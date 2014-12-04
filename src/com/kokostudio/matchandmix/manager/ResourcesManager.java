@@ -2,6 +2,8 @@ package com.kokostudio.matchandmix.manager;
 
 import java.io.IOException;
 
+import org.andengine.audio.music.Music;
+import org.andengine.audio.music.MusicFactory;
 import org.andengine.audio.sound.Sound;
 import org.andengine.audio.sound.SoundFactory;
 import org.andengine.engine.Engine;
@@ -48,7 +50,7 @@ public class ResourcesManager {
 	public ITextureRegion backTexture;
 	
 	//Sounds
-	public Sound playMenuSound;
+	public Music playMenuSound;
 	
 	// Splash Textures
 	public BitmapTextureAtlas SplashTextureAtlas;
@@ -399,13 +401,16 @@ public class ResourcesManager {
 
 	// TAPOS LAGAY MO TO SA loadPlayMenuAudio()
 	public void loadPlayMenuAudio() {
-		SoundFactory.setAssetBasePath("mfx/");
+		MusicFactory.setAssetBasePath("mfx/");
 		try {
-			playMenuSound = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "bg_music.mp3");
+			playMenuSound = MusicFactory.createMusicFromAsset(activity.getMusicManager(), activity, "bg_music.mp3");
+			this.playMenuSound.setLooping(true);
 		} catch(final IOException e) {
 			Debug.e(e);
 		}
 	}
+	
+//	/(activity.getSoundManager(), activity, "bg_music.mp3");
 // About Panel
 	public void loadAboutPanel(){
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main/");

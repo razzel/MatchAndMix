@@ -82,7 +82,7 @@ public class About extends BaseScene {
 				case TouchEvent.ACTION_UP:
 					// load guess the missing letter scene
 					// and dispose the main menu scene
-					
+					resourcesManager.playMenuSound.play();
 					SceneManager.getInstance().loadMainMenuScene();
 					back.setScale(1.f);
 					break;
