@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.andengine.audio.music.Music;
 import org.andengine.audio.music.MusicFactory;
-import org.andengine.audio.sound.Sound;
-import org.andengine.audio.sound.SoundFactory;
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.TextureOptions;
@@ -15,9 +13,8 @@ import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
 import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
 import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder.TextureAtlasBuilderException;
-import org.andengine.opengl.texture.bitmap.AssetBitmapTexture;
 import org.andengine.opengl.texture.region.ITextureRegion;
-import org.andengine.opengl.texture.region.TextureRegionFactory;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 import com.kokostudio.matchandmix.GameActivity;
@@ -38,118 +35,128 @@ public class ResourcesManager {
 	//-----------------------------
 	// TEXTURES & TEXTURE REGIONS
 	//-----------------------------
-	
 	// BACKGROUND TEXTURE ****************************************
 	public BitmapTextureAtlas bgTextureAtlas;
 	public ITextureRegion bgTextureRegion;
 	
 	// ENTITIES *****************************************************
-	public BuildableBitmapTextureAtlas entitiesTextureAtlas;
-	public ITextureRegion frameTextureRegion;
+	// QFRAMES
+	public BuildableBitmapTextureAtlas qFrameTextureAtlas;
 	public ITextureRegion qHeaderTextureRegion;
-	public ITextureRegion backTexture;
+	public TiledTextureRegion answeredTextureRegion;
+	public TiledTextureRegion notAnsweredTextureRegion;
 	
-	//Sounds
-	public Music playMenuSound;
+	// COMMON BUTTONS
+	public BuildableBitmapTextureAtlas commonButtonsTextureAtlas;
+	public TiledTextureRegion backTiledTextureRegion;
+	public TiledTextureRegion nextTiledTextureRegion;
+	public TiledTextureRegion prevTiledTextureRegion;
 	
-	// Splash Textures
+	// Splash Textures ********************************************************
 	public BitmapTextureAtlas SplashTextureAtlas;
 	public ITextureRegion SplashTextureRegion;
+	
+	// PLAY MENU TEXTURES **********************************************
+	public BuildableBitmapTextureAtlas playMenuTextureAtlas;
+	public ITextureRegion playMenuBackgroundTexture;
+	public TiledTextureRegion playTiledTextureRegion;
+	
+	// MAIN MENU TEXTURES **********************************************
+	public BuildableBitmapTextureAtlas mainMenuTextureAtlas;
+	public ITextureRegion menuHeaderTextureRegion;
+	public TiledTextureRegion gamesTiledTextureRegion;
+	public TiledTextureRegion progressTiledTextureRegion;
+	public TiledTextureRegion howtoTiledTextureRegion;
+	public TiledTextureRegion aboutTiledTextureRegion;
+	public TiledTextureRegion optionTiledTextureRegion;
+	public TiledTextureRegion exitTiledTextureRegion;
+	
+	// GAME MENU TEXTURES ***************************************************************
+	public BuildableBitmapTextureAtlas gameMenuTextureAtlas;
+	public TiledTextureRegion guessTextureRegion;
 	
 	// ABOUT PANELS ***********************************************
 	public BuildableBitmapTextureAtlas AboutSceneTextureAtlas;
 	public ITextureRegion aboutpanelTextureRegion;
 	
-	// PLAY MENU TEXTURES **********************************************
-	public BuildableBitmapTextureAtlas playMenuTextureAtlas;
-	public ITextureRegion playMenuBackgroundTexture;
-	public ITextureRegion playTextureRegion;
 	
-	// MAIN MENU TEXTURES **********************************************
-	public BuildableBitmapTextureAtlas mainMenuTextureAtlas;
-	public ITextureRegion pauseTextureRegion;
-	public ITextureRegion aboutTextureRegion;
-	public ITextureRegion about2TextureRegion;
-	public ITextureRegion gameGuessTextureRegion;
-	public ITextureRegion matchitTextureRegion;
-	public ITextureRegion SolveitTextureRegion;
-	public ITextureRegion CountitTextureRegion;
-	public ITextureRegion backTextureRegion;
-	public ITextureRegion loadingTextureRegion;
-	public ITextureRegion gamesTextureRegion;
-	public ITextureRegion menuheaderTextureRegion;
-	public ITextureRegion ProgressTextureRegion;
-	public ITextureRegion OptionTextureRegion;
-	public ITextureRegion howtoplayTextureRegion;
-	public ITextureRegion exitTextureRegion;
-	public ITextureRegion nextTextureRegion;
-	public ITextureRegion PrevTextureRegion;
-
-
+	//---------------------------------------------------------------------------
+	// SFX
+	//--------------------------------------------------------------------------
+	
 	//-----------------------------
 	// CLASS LOGIC
 	//-----------------------------
 	
-	// CREATE GENERAL BACKGROUND AND ENTITIES
+	// CREATE GENERAL BACKGROUND AND ENTITIES ==========================================================================================
 	public void createGeneralBackground() {
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
 		bgTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 1024, 1024);
 		bgTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(bgTextureAtlas, activity, "background.png", 10, 10);
 		bgTextureAtlas.load();
 	}
-	
 	public void unloadBackground() {
 		bgTextureAtlas.unload();
 	}
-	
-	public void createQuestionEntities() {
+	// QUESTION FRAMES
+	public void createQuestionFrames() {
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-		entitiesTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 512);
-		frameTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(entitiesTextureAtlas, activity, "question_frame.png");
-		qHeaderTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(entitiesTextureAtlas, activity, "question_header.png");
-		backTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(entitiesTextureAtlas, activity, "back.png");
-		
+		qFrameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 256);
+		qHeaderTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(qFrameTextureAtlas, activity, "question_header.png");
+		answeredTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(qFrameTextureAtlas, activity, "ans.png", 2,1);	
+		notAnsweredTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(qFrameTextureAtlas, activity, "not_ans.png", 2,1);
 		try {
-			this.entitiesTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
-			this.entitiesTextureAtlas.load();
+			this.qFrameTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
+			this.qFrameTextureAtlas.load();
 		} catch(final TextureAtlasBuilderException e) {
 			Debug.e(e);
 		}
 	}
-	
 	public void unloadQuestionFrame() {
-		entitiesTextureAtlas.unload();
+		qFrameTextureAtlas.unload();
 	}
 	
-	//// SPLASH SCENE////
+	// COMMON BUTTONS
+	public void createCommonButtons() {
+		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+		commonButtonsTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 300, 300);
+		backTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(commonButtonsTextureAtlas, activity, "back_btn.png", 2, 1);
+		nextTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(commonButtonsTextureAtlas, activity, "next_btn.png", 2, 1);
+		prevTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(commonButtonsTextureAtlas, activity, "prev_btn.png", 2, 1);
+		try {
+			this.commonButtonsTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
+			this.commonButtonsTextureAtlas.load();
+		} catch(final TextureAtlasBuilderException e) {
+			Debug.e(e);
+		}
+	}
+	public void unloadCommonButtons() {
+		commonButtonsTextureAtlas.unload();
+	}
+	
+	// SPLASH SCENE ==================================================================================================================
 	public void loadSplashScene() {
-	/*BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-	SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
-	SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(playMenuTextureAtlas, activity, "loading.png");
-	*/
-	
-	
-		
-		
+		//BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+		//SplashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
+		//SplashTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(playMenuTextureAtlas, activity, "loading.png");	
 	}
 	
 	public void unloadSplashScene() {
-	//	SplashTextureAtlas.unload();
-	//	SplashTextureRegion = null;
+		SplashTextureAtlas.unload();
+		SplashTextureRegion = null;
 	}
 	
-	//// PLAY MENU SCENE ////
+	// PLAY MENU SCENE ========================================================================================================================
 	public void loadPlayMenuResources() {
 		loadPlayMenuGraphics();
 		loadPlayMenuAudio();
 	}
 	
 	public void loadPlayMenuGraphics() {
-		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu/");
+		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_play/");
 		playMenuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
 		playMenuBackgroundTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(playMenuTextureAtlas, activity, "playmenu_background.png");
-		playTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(playMenuTextureAtlas, activity, "play.png");
-		
+		playTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(playMenuTextureAtlas, activity, "play_btn.png", 2,1);
 		try {
 			this.playMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.playMenuTextureAtlas.load();
@@ -157,8 +164,9 @@ public class ResourcesManager {
 			Debug.e(e);
 		}
 	}
-	
-	
+	public void loadPlayMenuAudio() {
+		
+	}	
 	
 	public void loadPlayMenuTextures() {
 		playMenuTextureAtlas.load();
@@ -169,39 +177,24 @@ public class ResourcesManager {
 	}
 	
 	
-	//// MAIN MENU SCENE ////
+	// MAIN MENU SCENE ======================================================================================================================
 	public void loadMainMenuResources() {
+		createGeneralBackground();
+		createCommonButtons();
 		loadMainMenuGraphics();
 		loadMainMenuAudio();
-		createGeneralBackground();
 	}
-	public void loadnextGraphics(){
-	//	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main");
-		
-		
-		
-		
-		
-	}
+	
 	public void loadMainMenuGraphics() {
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main/");
 		mainMenuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
-		pauseTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "pause.png");
-		backTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "back.png");
-		//about2TextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_panel.png");
-		gameGuessTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "guess_the_missing_letter.png");
-		matchitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "mi_btn.png");
-		CountitTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "ci_btn.png");
-		gamesTextureRegion  = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "games_btn.png");
-		menuheaderTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "menu_header.png");
-		ProgressTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "progress_btn.png");
-		OptionTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "option_btn.png");
-		howtoplayTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "how_btn.png");
-		aboutTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_btn.png");
-		exitTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity,"exit_btn.png");
-		nextTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "next_btn.png");
-		PrevTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "prev_btn.png");
-		//aboutpanelTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "about_panel.png");
+		menuHeaderTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuTextureAtlas, activity, "menu_header.png");
+		gamesTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mainMenuTextureAtlas, activity, "games_btn.png", 2, 1);
+		progressTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mainMenuTextureAtlas, activity, "prog_btn.png", 2, 1);
+		howtoTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mainMenuTextureAtlas, activity, "htp_btn.png", 2, 1);
+		aboutTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mainMenuTextureAtlas, activity, "about_btn.png", 2, 1);
+		optionTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mainMenuTextureAtlas, activity, "option_btn.png", 2, 1);
+		exitTiledTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mainMenuTextureAtlas, activity, "quit_btn.png", 2, 1);
 		try {
 			this.mainMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
 			this.mainMenuTextureAtlas.load();
@@ -210,39 +203,57 @@ public class ResourcesManager {
 		}
 	}
 	
-	public void unloadMainMenuTextures() {
-		mainMenuTextureAtlas.unload();
-	}
-	
 	public void loadMainMenuAudio() {
 		
 	}
-	
 	// UNLOAD
+	public void unloadMainMenuTextures() {
+		unloadBackground();
+		mainMenuTextureAtlas.unload();
+	}
 	
-	// PROGRESS SCENE
+	// GAME MENU SCENE ======================================================================================================================
+	public void loadGameMenuResources() {
+		createGeneralBackground();
+		createCommonButtons();
+		loadGameMenuGraphics();
+		loadGameMenuAudio();
+	}
 	
-	// OPTION SCENE
+	public void loadGameMenuGraphics() {
+		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_games/");
+		gameMenuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024);
+		guessTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(gameMenuTextureAtlas, activity, "gml_btn.png", 2, 1);
+		try {
+			this.gameMenuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1));
+			this.gameMenuTextureAtlas.load();
+		} catch(final TextureAtlasBuilderException e) {
+			Debug.e(e);
+		}
+	}
 	
-	// ABOUT SCENE
-	
-	public void loadAboutPanelResources(){
-		loadAboutPanel();
-		
+	public void loadGameMenuAudio() {
 		
 	}
+	// UNLOAD
+	public void unloadGameMenuTexture() {
+		unloadBackground();
+		gameMenuTextureAtlas.unload();
+	}
+	
+	// PROGRESS SCENE =======================================================================================================================
+	
+	// OPTION SCENE =========================================================================================================================
+	
+	// ABOUT SCENE ==========================================================================================================================
 	
 	//------------------------------------------------------------------------
 	// GAMES LOADING TEXTURE AREA
 	//------------------------------------------------------------------------
 	
-	public void loadGameResources() {
-		
-	}
-	
-	//// MATCH IT !!!! ////
+	// MATCH IT !!!! ============================================================================================================
 	public void loadMatchItResources() {
-		createQuestionEntities();
+		createQuestionFrames();
 		createGeneralBackground();
 		loadMatchItGraphics();
 		loadMatchItAudio();
@@ -258,28 +269,31 @@ public class ResourcesManager {
 	
 	// UNLOAD
 	public void unloadMatchItResources() {
+		unloadQuestionFrame();
 		unloadBackground();
 		unloadQuestionFrame();
 	}
 
-		// MATCH IT PANEL
+	// MATCH IT PANEL
 	public void loadMatchItPanelResources() {
 		createGeneralBackground();
-		createQuestionEntities();
+		createQuestionFrames();
 		loadMatchItPanelGraphics();
 		loadMatchItPanelAudio();
 	}
+	
 	public void loadMatchItPanelGraphics() {
 		
 	}
+	
 	public void loadMatchItPanelAudio() {
 		
 	}
 
-	///// GUESS THE MISSING LETTER !!!! ////
+	// GUESS THE MISSING LETTER !!!! =========================================================================================================
 	public void loadGTMLResources() {
-		createQuestionEntities();
 		createGeneralBackground();
+		createQuestionFrames();
 		loadGTMLGraphics();
 		loadGTMLAudio();
 	}
@@ -291,10 +305,28 @@ public class ResourcesManager {
 	public void loadGTMLAudio() {
 		
 	}
-	
+	// GTML PANEL
+		public void loadGTMLPanelResources() {
+			createGeneralBackground();
+			createCommonButtons();
+			loadGTMLPanelGrahics();
+			loadGTMLPanelAudio();
+		}
+			
+		public void loadGTMLPanelGrahics() {
+			
+		}
+		public void loadGTMLPanelAudio() {
+		
+		}
+
 	// UNLOAD
+	public void unloadGTMLTextures() {
+		unloadBackground();
+		unloadQuestionFrame();
+	}
 	
-	//// COUNT IT !!!!  ////
+	// COUNT IT !!!! =======================================================================================================================
 	public void loadCountItResources() {
 		loadCountItGraphics();
 		loadCountItAudio();
@@ -310,7 +342,7 @@ public class ResourcesManager {
 	
 	// UNLOAD
 	
-	//// SOLVE IT !!!!  ////
+	// SOLVE IT !!!! =======================================================================================================================
 	public void loadSolveItResources() {
 		loadSolveItGraphics();
 		loadSolveItAudio();
@@ -326,7 +358,7 @@ public class ResourcesManager {
 	
 	// UNLOAD
 	
-	//// THAT COLOR IS ???? ////
+	// THAT COLOR IS ???? ===================================================================================================================
 	public void loadThatColorIsResources() {
 		loadThatColorIsGraphics();
 		loadThatColorIsAudio();
@@ -339,12 +371,6 @@ public class ResourcesManager {
 	public void loadThatColorIsAudio() {
 		
 	}
-	public void loadAboutResources(){
-		createQuestionEntities();
-		createGeneralBackground();
-		
-	}
-	
 	// UNLOAD
 	
 	//----------------------------------------------------------
@@ -361,80 +387,5 @@ public class ResourcesManager {
 	public static ResourcesManager getInstance() {
 		return INSTANCE;
 	}
-
-	public void unloadGTMLPANELResources() {
-		unloadBackground();
-		unloadQuestionFrame();
-		
-	}
-
-	public void loadGTMLPANELResources() {
-		createGeneralBackground();
-		createQuestionEntities();
-		loadGTMLPanelGraphics();
-		loadGTMLItPanelAudio();
-		
-	}
-
-	private void loadGTMLItPanelAudio() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void loadGTMLPanelGraphics() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	public void loadnextResources() {
-		// TODO Auto-generated method stub
-		createGeneralBackground();
-		createQuestionEntities();
-	}
-	
-	
-	
-
-
-
-	// TAPOS LAGAY MO TO SA loadPlayMenuAudio()
-	public void loadPlayMenuAudio() {
-		MusicFactory.setAssetBasePath("mfx/");
-		try {
-			playMenuSound = MusicFactory.createMusicFromAsset(activity.getMusicManager(), activity, "bg_music.mp3");
-			this.playMenuSound.setLooping(true);
-		} catch(final IOException e) {
-			Debug.e(e);
-		}
-	}
-	
-//	/(activity.getSoundManager(), activity, "bg_music.mp3");
-// About Panel
-	public void loadAboutPanel(){
-		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu_main/");
-		AboutSceneTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
-		aboutpanelTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(AboutSceneTextureAtlas, activity, "about_panel.png");
-		backTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(AboutSceneTextureAtlas, activity, "back_btn.png");
-		try {
-			this.AboutSceneTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
-			this.AboutSceneTextureAtlas.load();
-		} catch(final TextureAtlasBuilderException e) {
-			Debug.e(e);
-		}
-		
-		//AboutSceneTextureAtlas.load();
-		
-	}
-	
-	public void unloadAboutPanel(){
-		AboutSceneTextureAtlas.unload();
-	}
-
-
-	
-
-	
 	
 }

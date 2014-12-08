@@ -6,16 +6,18 @@ import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
 import com.kokostudio.matchandmix.base.BaseScene;
-import com.kokostudio.matchandmix.scene.About;
+//import com.kokostudio.matchandmix.scene.About;
 import com.kokostudio.matchandmix.scene.MainMenuScene;
 import com.kokostudio.matchandmix.scene.GameMenuScene;
+//import com.kokostudio.matchandmix.scene.GameMenuScene;
 import com.kokostudio.matchandmix.scene.PlayMenuScene;
 import com.kokostudio.matchandmix.scene.SplashScene;
 
 import com.kokostudio.matchandmix.scene.game.GuessTheMissingLetter;
-import com.kokostudio.matchandmix.scene.game.MatchIt;
+//import com.kokostudio.matchandmix.scene.game.MatchIt;
+import com.kokostudio.matchandmix.scene.game.panel.GuessTheMissingLetterPanel;
 
-import com.kokostudio.matchandmix.scene.game.panel.MatchItPanel;
+//import com.kokostudio.matchandmix.scene.game.panel.MatchItPanel;
 
 public class SceneManager {
 	
@@ -28,8 +30,8 @@ public class SceneManager {
 	private BaseScene progressScene;
 	private BaseScene optionScene;
 	private BaseScene aboutScene;
-	private BaseScene next;
-	private BaseScene GameMenuScene;
+	private BaseScene gameMenuScene;
+	
 	private BaseScene loadingScene;
 	
 	// GAMES
@@ -40,10 +42,10 @@ public class SceneManager {
 	private BaseScene ThatColorIsScene;
 	// GAME PANELS
 	private BaseScene MatchItPanelScene;
-	private BaseScene GTMLPANELScene;
-	private BaseScene COUNTITPANELScene;
-	
-	
+	private BaseScene GTMLPanelScene;
+	private BaseScene CountItPanelScene;
+	private BaseScene SolveItPanelScene;
+	private BaseScene ThatColorIsPanelScene;
 	
 	//---------------------------------
 	// VARIABLES
@@ -72,15 +74,17 @@ public class SceneManager {
 		
 		//GAME PANEL SCENES
 		SCENE_MATCHITPANEL,
-		SCENE_GTMLPANEl,
-		SCENE_COUNTITPANEL
+		SCENE_GTMLPANEL,
+		SCENE_COUNTITPANEL,
+		SCENE_SOLVEITPANEL,
+		SCENE_THATCOLORISPANEL
 	}
 	
 	//----------------------------------
 	// CLASS LOGIC
 	//----------------------------------
 	
-	// SPLASH SCENE
+	// SPLASH SCENE ==================================================================================================
 	public void createSplashScene(OnCreateSceneCallback pOnCreateSceneCallback) {
 		ResourcesManager.getInstance().loadSplashScene();
 		splashScene = new SplashScene();
@@ -95,84 +99,73 @@ public class SceneManager {
 	}
 	
 	
-	// PLAY MENU SCENE
+	// PLAY MENU SCENE ======================================================================================================
 	public void createPlayMenuScene() {
 		ResourcesManager.getInstance().loadPlayMenuResources();
 		playMenuScene = new PlayMenuScene();
 		setScene(playMenuScene);
-		disposeSplashScene();
+		//disposeSplashScene();
 	}
 	
 	public void loadPlayMenuScene() {
 		// dispose the entities in the play menu scene
-		mainMenuScene.disposeScene();
-		ResourcesManager.getInstance().unloadMainMenuTextures();
 		ResourcesManager.getInstance().unloadBackground();
 		// load the play menu texture
 		ResourcesManager.getInstance().loadPlayMenuTextures();
 		setScene(playMenuScene);
 	}
 	
-	// MAIN MENU SCENE
+	// MAIN MENU SCENE ========================================================================================================
 	public void loadMainMenuScene() {
 		// unload the play menu texture
-		ResourcesManager.getInstance().unloadPlayMenuTextures();	
+		ResourcesManager.getInstance().unloadPlayMenuTextures();
 		// load the main menu texture
 		ResourcesManager.getInstance().loadMainMenuResources();
 		mainMenuScene = new MainMenuScene();
 		setScene(mainMenuScene);
 	}
 	
-	// gameMenu
+	// GAME MENU SCENE =========================================================================================================
 	public void loadGameMenuScene() {
-		// unload the play menu texture
-		ResourcesManager.getInstance().unloadPlayMenuTextures();	
-		// load the main menu texture
-		ResourcesManager.getInstance().loadMainMenuResources();
-		GameMenuScene = new GameMenuScene();
-		setScene(GameMenuScene);
+		// unload the MAIN MENU texture
+		ResourcesManager.getInstance().unloadMainMenuTextures();	
+		// load the GAME MENU texture
+		ResourcesManager.getInstance().loadGameMenuResources();
+		gameMenuScene = new GameMenuScene();
+		setScene(gameMenuScene);
 	}
 	
 	
 	// GAMES SCENES MANAGEMENT
 	
-	// GUESS THE MISSING LETTER SCENE
+	// GUESS THE MISSING LETTER SCENE ===============================================================================================
 	public void loadGTMLScene() {
-		// unload the main menu textures
-		ResourcesManager.getInstance().unloadMainMenuTextures();
+		// unload the GAME MENU textures
+		ResourcesManager.getInstance().unloadGameMenuTexture();
 		// load the guess the missing letter resources
 		ResourcesManager.getInstance().loadGTMLResources();
 		GuessTheMissingLetterScene = new GuessTheMissingLetter();
 		setScene(GuessTheMissingLetterScene);
 		
 	}
+	
 	// LOAD GTML  PANEL SCENE
 	public void loadGTMLPanelScene() {
 		// unload the GTML it textures
-		ResourcesManager.getInstance().unloadGTMLPANELResources();
+		ResourcesManager.getInstance().unloadGTMLTextures();
 		// load the GTML PANEL SCENE RESOURCES
-		ResourcesManager.getInstance().loadGTMLPANELResources();
-		GTMLPANELScene = new MatchItPanel();
-		setScene(GTMLPANELScene);	
+		ResourcesManager.getInstance().loadGTMLPanelResources();
+		GTMLPanelScene = new GuessTheMissingLetterPanel();
+		setScene(GTMLPanelScene);	
 	}
 	
-	public void loadnextScene() {
-		// unload the play menu texture
-		ResourcesManager.getInstance().unloadPlayMenuTextures();	
-		// load the main menu texture
-		ResourcesManager.getInstance().loadMainMenuResources();
-		mainMenuScene = new GameMenuScene();
-		setScene(mainMenuScene);
-	}
-	
-	
-	// MAtch IT SCENE
+	// MAtch IT SCENE ==============================================================================================================
 	public void loadMatchItScene() {
 		// unload the main menu textures
 		ResourcesManager.getInstance().unloadMainMenuTextures();
 		// load the guess the missing letter resources
 		ResourcesManager.getInstance().loadMatchItResources();
-		MatchItScene = new MatchIt();
+		//MatchItScene = new MatchIt();
 		setScene(MatchItScene);		
 	}
 	
@@ -182,16 +175,17 @@ public class SceneManager {
 		ResourcesManager.getInstance().unloadMatchItResources();
 		// load the MATCH IT PANEL SCENE RESOURCES
 		ResourcesManager.getInstance().loadMatchItPanelResources();
-		MatchItPanelScene = new MatchItPanel();
+		//MatchItPanelScene = new MatchItPanel();
 		setScene(MatchItPanelScene);	
 	}
-	// ABOUT
+	
+	// ABOUT ================================================================================================================
 	public void loadaboutScene() {
 		// unload the play menu texture
 		ResourcesManager.getInstance().unloadMainMenuTextures();	
 		// load the main menu texture
-		ResourcesManager.getInstance().loadAboutPanelResources();
-		aboutScene = new About();
+		//ResourcesManager.getInstance().loadAboutPanelResources();
+		//aboutScene = new About();
 		setScene(aboutScene);
 	}
 	
@@ -234,23 +228,21 @@ public class SceneManager {
 		case SCENE_OPTION:
 			setScene(optionScene);
 			break;
+		// GAMES AND PANELS
 		case SCENE_MATCHIT:
 			setScene(MatchItScene);
 			break;
 		case SCENE_MATCHITPANEL:
 			setScene(MatchItPanelScene);
-			break;
-		case SCENE_GTMLPANEl:
-			setScene(GTMLPANELScene);
+			break;		
+		case SCENE_GTMLPANEL:
+			setScene(GTMLPanelScene);
 			break;
 		case SCENE_COUNTITPANEL:
-			setScene(COUNTITPANELScene);
-			break;
-		case SCENE_NEXT:
-			setScene(next);
+			setScene(CountItPanelScene);
 			break;
 		case SCENE_GAMEMENU:
-			setScene(GameMenuScene);
+			setScene(gameMenuScene);
 			break;
 		case SCENE_ABOUT:
 			setScene(aboutScene);

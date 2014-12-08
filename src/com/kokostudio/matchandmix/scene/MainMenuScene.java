@@ -1,56 +1,38 @@
 package com.kokostudio.matchandmix.scene;
 
 import org.andengine.engine.camera.Camera;
-import org.andengine.engine.camera.hud.HUD;
-import org.andengine.entity.sprite.ButtonSprite;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.TiledSprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 
-
-import android.content.Intent;
-import android.net.Uri;
-
 import com.kokostudio.matchandmix.base.BaseScene;
+import com.kokostudio.matchandmix.manager.ResourcesManager;
 import com.kokostudio.matchandmix.manager.SceneManager;
 import com.kokostudio.matchandmix.manager.SceneManager.SceneType;
 
-
 public class MainMenuScene extends BaseScene {
 	
-	private HUD mainMenuHUD;
-	
-	private ButtonSprite back;
-	private ButtonSprite pause;
-	private ButtonSprite about;
-	private ButtonSprite gameGuessTheMissingLetter;
-	private ButtonSprite matchitTextureRegion;
-	private ButtonSprite solveitTextureRegion;
-	private ButtonSprite CountitTextureRegion;
-	private ButtonSprite games;
-	private ButtonSprite progress;
-	private ButtonSprite option;
-	private ButtonSprite howtoplay;
-	private ButtonSprite next;
-	private ButtonSprite prev;
-	private ButtonSprite exit;
-	
-	
-	private Sprite menuheader;
-	
+	private TiledSprite next, prev;
+	private TiledSprite games, progress, howTo, about, options, exit;
+
 	@Override
 	public void createScene() {
+		this.setTouchAreaBindingOnActionDownEnabled(true);
 		createBackground();
+		createMenuHeader();
 		createMenuSelection();
-		createHUD();
-		howtoplay.setVisible(false);
-		about.setVisible(false);
-		exit.setVisible(false);
+		createButtons();
 		prev.setVisible(false);
+		about.setVisible(false);
+		options.setVisible(false);
+		exit.setVisible(false);
 	}
 
 	@Override
-	public void onBackKeyPressed() { }
+	public void onBackKeyPressed() {
+		//
+	}
 
 	@Override
 	public SceneType getSceneType() {
@@ -59,275 +41,157 @@ public class MainMenuScene extends BaseScene {
 
 	@Override
 	public void disposeScene() {
-		camera.setHUD(null);
-		camera.setCenter(400, 240);
-		pause.detachSelf();
-		pause.dispose();
-		
-	/*	howtoplay.dispose();
-		howtoplay.detachSelf();
-		about.dispose();
-		about.detachSelf();
-		exit.dispose();
-		exit.detachSelf();
-		back.detachSelf();
-		back.dispose();
-		*/
+		// dispose and detach all of the TiledSprite declared in this class
 	}
 	
-	//------------------------------------------------------
+	// ===============================================================================================================================
 	// CLASS LOGIC
-	//------------------------------------------------------
+	// ===============================================================================================================================
 	
-	private void createBackground() {
+	public void createBackground() {
 		attachChild(new Sprite(400, 240, resourcesManager.bgTextureRegion, vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
-				super.preDraw(pGLState, pCamera);
 				pGLState.enableDither();
-				
-			}		
-		});	
+				super.preDraw(pGLState, pCamera);
+			}
+		});
 	}
 	
-	private void createHUD() {
-		mainMenuHUD = new HUD();
-		// Create pause and back button
-		camera.setHUD(mainMenuHUD);
+	public void createMenuHeader() {
+		attachChild(new Sprite(400, 430, resourcesManager.menuHeaderTextureRegion, vbom) {
+			@Override
+			protected void preDraw(GLState pGLState, Camera pCamera) {
+				pGLState.enableDither();
+				super.preDraw(pGLState, pCamera);
+			}
+			
+		});
 	}
 	
-	private void createMenuSelection() {
-		//games
-		this.resourcesManager.playMenuSound.play();
-		this.resourcesManager.playMenuSound.setLooping(true);
-
-		games = new ButtonSprite(180, 240, resourcesManager.gamesTextureRegion, vbom) {
+	public void createButtons() {
+		next = new TiledSprite(765, 200, resourcesManager.nextTiledTextureRegion, vbom) {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				switch(pSceneTouchEvent.getAction()) {
 				case TouchEvent.ACTION_DOWN:
-					games.setScale(1.3f);
+					next.setCurrentTileIndex(1);
+					next.setScale(0.9f);
 					break;
 				case TouchEvent.ACTION_UP:
-					// load guess the missing letter scene
-					// and dispose the main menu scene
-					resourcesManager.playMenuSound.pause();
-				SceneManager.getInstance().loadGameMenuScene();
-					games.setScale(1.f);
+					next.setCurrentTileIndex(0);
+					next.setScale(1.0f);
+					
+					// Hide the 1st 3 entities
+					next.setVisible(false);
+					games.setVisible(false);
+					progress.setVisible(false);
+					howTo.setVisible(false);
+					// then unregister their toucharea
+					unregisterTouchArea(games);
+					unregisterTouchArea(progress);
+					unregisterTouchArea(howTo);
+					
+					// show the 2nd 3 entities
+					prev.setVisible(true);
+					about.setVisible(true);
+					options.setVisible(true);
+					exit.setVisible(true);
+					// register again their toucharea
+					registerTouchArea(about);
+					registerTouchArea(options);
+					registerTouchArea(exit);
+					
 					break;
 				}
-				
-				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
+				return true;
 			}
-			
 		};
+		prev = new TiledSprite(35, 200, resourcesManager.prevTiledTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					prev.setCurrentTileIndex(1);
+					prev.setScale(0.9f);
+					break;
+				case TouchEvent.ACTION_UP:
+					prev.setCurrentTileIndex(0);
+					prev.setScale(1.0f);
+					
+					// show the 1st 3 entities
+					next.setVisible(true);
+					games.setVisible(true);
+					progress.setVisible(true);
+					howTo.setVisible(true);
+					// register again their toucharea
+					registerTouchArea(games);
+					registerTouchArea(progress);
+					registerTouchArea(howTo);
+					
+					// hide the 2nd 3 entities
+					prev.setVisible(false);
+					about.setVisible(false);
+					options.setVisible(false);
+					exit.setVisible(false);
+					// unregister their toucharea
+					unregisterTouchArea(about);
+					unregisterTouchArea(options);
+					unregisterTouchArea(exit);
+					break;
+				}
+				return true;
+			}
+		};
+		registerTouchArea(next);
+		registerTouchArea(prev);
+		attachChild(next);
+		attachChild(prev);	
+	}
+	
+	public void createMenuSelection() {
+		// 1ST MENU
+		games = new TiledSprite(185, 200, resourcesManager.gamesTiledTextureRegion, vbom) {
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				switch(pSceneTouchEvent.getAction()) {
+				case TouchEvent.ACTION_DOWN:
+					games.setCurrentTileIndex(1);
+					games.setScale(0.9f);
+					break;
+				case TouchEvent.ACTION_UP:
+					// LOAD THE GAME MENU SCENE in the SceneManager
+					SceneManager.getInstance().loadGameMenuScene();
+					
+					games.setCurrentTileIndex(0);
+					games.setScale(1.0f);
+					break;
+				}
+				return true;
+			}	
+		};
+		
+		progress = new TiledSprite(400, 200, resourcesManager.progressTiledTextureRegion, vbom);
+		
+		howTo = new TiledSprite(615, 200, resourcesManager.howtoTiledTextureRegion, vbom);
+		
+		
 		registerTouchArea(games);
 		attachChild(games);
-		
-		
-		//progress
-		progress = new ButtonSprite(400, 240, resourcesManager.ProgressTextureRegion, vbom) {
-			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				switch(pSceneTouchEvent.getAction()) {
-				case TouchEvent.ACTION_DOWN:
-					progress.setScale(1.3f);
-					break;
-				case TouchEvent.ACTION_UP:
-					// load guess the missing letter scene
-					// and dispose the main menu scene
-				//	SceneManager.getInstance().loadGTMLScene();
-					progress.setScale(1.f);
-					resourcesManager.playMenuSound.pause();
-					break;
-				}
-				
-				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-			}
-			
-		};
-		registerTouchArea(progress);
 		attachChild(progress);
+		attachChild(howTo);
 		
+		// 2ND MENU
+		about = new TiledSprite(185, 200, resourcesManager.aboutTiledTextureRegion, vbom);
 		
-		option = new ButtonSprite(620, 240, resourcesManager.OptionTextureRegion, vbom) {
-			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				switch(pSceneTouchEvent.getAction()) {
-				case TouchEvent.ACTION_DOWN:
-					option.setScale(1.3f);
-					break;
-				case TouchEvent.ACTION_UP:
-					// load guess the missing letter scene
-					// and dispose the main menu scene
-				//	SceneManager.getInstance().loadGTMLScene
-					//startActivity(i);
-					resourcesManager.playMenuSound.pause();
-					next.setVisible(true);
-					option.setScale(1.f);
-					break;
-				}
-				
-				return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-			}
+		options = new TiledSprite(400, 200, resourcesManager.optionTiledTextureRegion, vbom);
+		
+		exit = new TiledSprite(615, 200, resourcesManager.exitTiledTextureRegion, vbom);
+		
+		attachChild(about);
+		attachChild(options);
+		attachChild(exit);
+		
+	}
 
-		
-			
-		};
-		registerTouchArea(option);
-		attachChild(option);
-	
-				//how to play
-				howtoplay = new ButtonSprite(180, 240, resourcesManager.howtoplayTextureRegion, vbom) {
-					
-					@Override
-					public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-						switch(pSceneTouchEvent.getAction()) {
-						case TouchEvent.ACTION_DOWN:
-							howtoplay.setScale(1.3f);
-							break;
-						case TouchEvent.ACTION_UP:
-							resourcesManager.playMenuSound.pause();
-							howtoplay.setScale(1.f);
-							break;
-						}
-						
-						return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-					}
-					
-				};
-				registerTouchArea(howtoplay);
-				attachChild(howtoplay);
-				
-				
-				//about
-						about = new ButtonSprite(400, 240, resourcesManager.aboutTextureRegion, vbom) {
-							@Override
-							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-								switch(pSceneTouchEvent.getAction()) {
-								case TouchEvent.ACTION_DOWN:
-									about.setScale(1.3f);
-									break;
-								case TouchEvent.ACTION_UP:
-									// load guess the missing letter scene
-									// and dispose the main menu scene
-									SceneManager.getInstance().loadaboutScene();
-									resourcesManager.playMenuSound.pause();
-									System.out.print("About MAtch and Mix!");
-									about.setScale(1.f);
-									break;
-								}
-								
-								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-							}
-							
-						};
-						registerTouchArea(about);
-						attachChild(about);
-						
-						
-						exit = new ButtonSprite(620, 240, resourcesManager.exitTextureRegion, vbom) {
-							@Override
-							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-								switch(pSceneTouchEvent.getAction()) {
-								case TouchEvent.ACTION_DOWN:
-									exit.setScale(1.3f);
-									break;
-								case TouchEvent.ACTION_UP:
-									// load guess the missing letter scene
-									// and dispose the main menu scene
-								//	SceneManager.getInstance().loadGTMLScene();
-									System.out.print("Thanks For Playing!");
-									System.exit(0);
-									
-									exit.setScale(1.f);
-									break;
-								}
-								
-								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-							}
-							
-						};
-						registerTouchArea(exit);
-						attachChild(exit);
-						
-						
-						
-						//Next
-						
-						next = new ButtonSprite(760, 220, resourcesManager.nextTextureRegion, vbom) {
-							
-							@Override
-							public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-								switch(pSceneTouchEvent.getAction()) {
-								
-								case TouchEvent.ACTION_DOWN:
-									next.setScale(1.3f);
-									break;
-								case TouchEvent.ACTION_UP:
-									
-									//next
-									howtoplay.setVisible(true);
-									about.setVisible(true);
-									exit.setVisible(true);
-									//prev
-									games.setVisible(false);
-									progress.setVisible(false);
-									option.setVisible(false);
-									next.setVisible(false);
-									prev.setVisible(true);
-									next.setScale(1.f);
-									break;
-								}
-								
-								return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-							}
-							
-						};
-						registerTouchArea(next);
-						attachChild(next);
-						
-						
-						
-						//ACTION BUTTONS ******************************************
-						//Previous
-								prev = new ButtonSprite(40, 220, resourcesManager.PrevTextureRegion, vbom) {
-									@Override
-									public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-										switch(pSceneTouchEvent.getAction()) {
-										case TouchEvent.ACTION_DOWN:
-											prev.setScale(1.3f);
-											break;
-										case TouchEvent.ACTION_UP:
-											//next
-											howtoplay.setVisible(false);
-											about.setVisible(false);
-											exit.setVisible(false);
-											//prev
-											games.setVisible(true);
-											progress.setVisible(true);
-											option.setVisible(true);
-											next.setVisible(true);
-											prev.setVisible(false);
-											prev.setScale(1.f);
-											break;
-										}
-										
-										return super.onAreaTouched(pSceneTouchEvent, pTouchAreaLocalX, pTouchAreaLocalY);
-									}
-									
-								};
-								registerTouchArea(prev);
-								attachChild(prev);
-						
-					
-		menuheader = new Sprite(400, 430, resourcesManager.menuheaderTextureRegion, vbom);
-		attachChild(menuheader);
-		
-			}
-	
 }
-
-
-
-
